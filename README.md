@@ -1,14 +1,11 @@
-# voyage-tasks
+# Travel Card App (Name TBA)
 
-Your project's `readme` is as important to success as your code. For 
-this reason you should put as much care into its creation and maintenance
-as you would any other component of the application.
+A shareable vacation planning board serving users with visual impairments.
 
-If you are unsure of what should go into the `readme` let this article,
-written by an experienced Chingu, be your starting point - 
-[Keys to a well written README](https://tinyurl.com/yk3wubft).
-
-And before we go there's "one more thing"! Once you decide what to include
-in your `readme` feel free to replace the text we've provided here.
-
-> Own it & Make it your Own!
+## How to run
+### Locally
+1. Clone this project.
+2. `cd` into the project directory.
+3. Run `yarn`.
+4. Run `yarn dev`.
+5. Navigate to `http://127.0.0.1:5173/` in your web browser.
