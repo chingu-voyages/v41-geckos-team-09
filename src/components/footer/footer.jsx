@@ -6,7 +6,7 @@ const Footer = () => {
         <div>
 <footer className ="footerContainer">
             <h4>Travel2it is coded by 
-                <a target="_blank" href='https://www.linkedin.com/in/sara-baqla/' title="Sarah, a linkedin.com link"> Sarah
+                <a target="_blank" href='https://www.linkedin.com/in/sara-baqla/' title="Sara, a linkedin.com link"> Sarah
                 </a>, Ian, Thomas, Andy, and
                 <a target="_blank" href='https://www.linkedin.com/in/isabel-klint/' title="Isabel, a linkedin.com link"> Isabel
                 </a>. See our project on
