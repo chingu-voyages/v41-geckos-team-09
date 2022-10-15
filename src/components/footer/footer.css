@@ -1,0 +1,16 @@
+h4 {
+    color:dimgrey
+}
+
+/* why won't the hover text change to indianred? */
+/* I realise Ian will change the colours and style */
+a:link, a:visited, a:hover, a:active {
+    color:indianred
+}
+
+.footerContainer {
+    position: fixed;
+    left:0;
+    bottom:0;
+    right:0;
+}
