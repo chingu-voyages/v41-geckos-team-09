@@ -5,7 +5,7 @@ import './stack.css'
 export default function Stack() {
   return (
     <div>
-      <p>Stack will go here</p>
+      <p>Stack will go here!</p>
     </div>
   )
   }
