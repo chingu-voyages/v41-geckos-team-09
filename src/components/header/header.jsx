@@ -8,10 +8,10 @@ export default function Header() {
       <img className='header-logo' src={logo} alt='travel logo' />
       <div className='nav'>
         <ul className='links'>
-          <li><a href='https://github.com/chingu-voyages/v41-geckos-team-09'>Link 1</a></li>
-          <li><a href='https://github.com/chingu-voyages/v41-geckos-team-09'>Link 2</a></li>
-          <li><a href='https://github.com/chingu-voyages/v41-geckos-team-09'>Link 3</a></li>
-          <li><a href='https://github.com/chingu-voyages/v41-geckos-team-09'>Link 4</a></li>
+          <li><a className="custom-link-header" href='https://github.com/chingu-voyages/v41-geckos-team-09'>Link 1</a></li>
+          <li><a className="custom-link-header" href='https://github.com/chingu-voyages/v41-geckos-team-09'>Link 2</a></li>
+          <li><a className="custom-link-header" href='https://github.com/chingu-voyages/v41-geckos-team-09'>Link 3</a></li>
+          <li><a className="custom-link-header" href='https://github.com/chingu-voyages/v41-geckos-team-09'>Link 4</a></li>
         </ul>
 
         <div className='custom-select'>
