@@ -7,13 +7,13 @@ header {
   width: 100%;
 }
 
-a {
+.custom-link-header {
   text-decoration: none;
   padding: 2rem;
   color: #75c6fb;
 }
 
-a:hover {
+.custom-link-header:hover {
   color: #9475f9;
   font-size: larger;
 }

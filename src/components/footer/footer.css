@@ -4,8 +4,9 @@ h4 {
 
 /* why won't the hover text change to indianred? */
 /* I realise Ian will change the colours and style */
-a:link, a:visited, a:hover, a:active {
-    color:indianred
+.custom-link:link, .custom-link:visited, .custom-link:hover, .custom-link:active {
+    color:indianred;
+    padding: 0;
 }
 
 .footerContainer {
@@ -13,4 +14,5 @@ a:link, a:visited, a:hover, a:active {
     left:0;
     bottom:0;
     right:0;
+    text-align: center;
 }
