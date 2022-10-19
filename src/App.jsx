@@ -3,7 +3,6 @@ import './App.css'
 import Header from './components/header/header.jsx'
 import Timeline from './components/timeline/timeline.jsx'
 import Body from './components/body.jsx'
-import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
 function App() {
 
