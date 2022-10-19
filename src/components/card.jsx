@@ -16,12 +16,12 @@ const Container = styled.div`
         : 'white'};
 `
 
-export default class Task extends React.Component {
+export default class Card extends React.Component {
   render() {
-    const isDragDisabled = this.props.task.id === 'task-1'
+    const isDragDisabled = this.props.card.id === 'card-1'
     return (
       <Draggable
-        draggableId={this.props.task.id}
+        draggableId={this.props.card.id}
         index={this.props.index}
         isDragDisabled={isDragDisabled}
       >
@@ -31,9 +31,9 @@ export default class Task extends React.Component {
             {...provided.dragHandleProps}
             ref={provided.innerRef}
             isDragging={snapshot.isDragging}
-            aria-roledescription="Press space bar to lift the task"
+            aria-roledescription="Press space bar to lift the card"
           >
-            {this.props.task.content}
+            {this.props.card.content}
           </Container>
         )}
       </Draggable>

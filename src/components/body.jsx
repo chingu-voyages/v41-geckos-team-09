@@ -6,7 +6,7 @@ import '@atlaskit/css-reset'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import styled from 'styled-components'
 import initialData from './initial-data'
-import Column from './column'
+import Stack from './stack'
 
 const Container = styled.div`
   display:flex;
@@ -14,9 +14,9 @@ const Container = styled.div`
 
 class InnerList extends React.PureComponent {
   render() {
-    const {column, taskMap, index } = this.props;
-    const tasks = column.taskIds.map(taskId => taskMap[taskId]);
-    return <Column column={column} tasks={tasks} index={index} />;
+    const {stack, taskMap, index } = this.props;
+    const tasks = stack.taskIds.map(taskId => taskMap[taskId]);
+    return <Stack stack={stack} tasks={tasks} index={index} />;
   }
 }
 
@@ -58,37 +58,37 @@ class Body extends React.Component {
       return
     }
 
-    if (type === 'column') {
-      const newColumnOrder = Array.from(this.state.columnOrder);
-      newColumnOrder.splice(source.index, 1);
-      newColumnOrder.splice(destination.index, 0, draggableId);
+    if (type === 'stack') {
+      const newStackOrder = Array.from(this.state.stackOrder);
+      newStackOrder.splice(source.index, 1);
+      newStackOrder.splice(destination.index, 0, draggableId);
 
       const newState = {
         ...this.state,
-        columnOrder: newColumnOrder,
+        stackOrder: newstackOrder,
       };
       this.setState(newState);
       return;
     }
 
-    const start = this.state.columns[source.droppableId]
-    const finish = this.state.columns[destination.droppableId]
+    const start = this.state.stacks[source.droppableId]
+    const finish = this.state.stacks[destination.droppableId]
 
     if (start === finish) {
       const newTaskIds = Array.from(start.taskIds)
       newTaskIds.splice(source.index, 1)
       newTaskIds.splice(destination.index, 0, draggableId)
 
-      const newColumn = {
+      const newStack = {
         ...start,
         taskIds: newTaskIds
       }
 
       const newState = {
         ...this.state,
-        columns: {
-          ...this.state.columns,
-          [newColumn.id]: newColumn
+        stacks: {
+          ...this.state.stacks,
+          [newStack.id]: newStacks
         }
       }
 
@@ -113,8 +113,8 @@ class Body extends React.Component {
 
     const newState = {
       ...this.state,
-      columns: {
-        ...this.state.columns,
+      stacks: {
+        ...this.state.stacks,
         [newStart.id]: newStart,
         [newFinish.id]: newFinish
       }
@@ -129,26 +129,26 @@ class Body extends React.Component {
         onDragUpdate={this.onDragUpdate}
         onDragEnd={this.onDragEnd}>
         <Droppable
-          droppableId="all-columns"
+          droppableId="all-stacks"
           direction="horizontal"
-          type="column"
+          type="stack"
           >
             {provided => (
               <Container
                 {...provided.droppableProps}
                 ref={provided.innerRef}
               >
-                {this.state.columnOrder.map((columnId, index) => {
-                  const column = this.state.columns[columnId]
+                {this.state.stackOrder.map((stackId, index) => {
+                  const stack = this.state.stacks[stackId]
                    /* eslint-disable no-unused-vars */
-                   const tasks = column.taskIds.map(
+                   const tasks = stack.taskIds.map(
                     taskId => this.state.tasks[taskId]
                   );
                   /* eslint-enable no-unused-vars */
                   return (
                     <InnerList 
-                      key={column.id} 
-                      column={column} 
+                      key={stack.id} 
+                      stack={stack} 
                       taskMap={this.state.tasks} 
                       index={index} 
                     />

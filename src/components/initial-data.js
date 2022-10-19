@@ -1,29 +1,29 @@
 const initialData = {
-    tasks: {
-      'task-1': { id: 'task-1', content: 'Take out the garbage' },
-      'task-2': { id: 'task-2', content: 'Watch my favorite show' },
-      'task-3': { id: 'task-3', content: 'Charge my phone' },
-      'task-4': { id: 'task-4', content: 'Cook dinner' }
+    cards: {
+      'card-1': { id: 'card-1', content: 'Take out the garbage' },
+      'card-2': { id: 'card-2', content: 'Watch my favorite show' },
+      'card-3': { id: 'card-3', content: 'Charge my phone' },
+      'card-4': { id: 'card-4', content: 'Cook dinner' }
     },
-    columns: {
-      'column-1': {
-        id: 'column-1',
+    stacks: {
+      'stack-1': {
+        id: 'stack-1',
         title: 'To do',
-        taskIds: ['task-1', 'task-2', 'task-3', 'task-4']
+        cardIds: ['card-1', 'card-2', 'card-3', 'card-4']
       },
-      'column-2': {
-        id: 'column-2',
+      'stack-2': {
+        id: 'stack-2',
         title: 'In progress',
-        taskIds: []
+        cardIds: []
       },
-      'column-3': {
-        id: 'column-3',
+      'stack-3': {
+        id: 'stack-3',
         title: 'Done',
-        taskIds: []
+        cardIds: []
       }
     },
-    // Facilitate reordering of the columns
-    columnOrder: ['column-1', 'column-2', 'column-3']
+    // Facilitate reordering of the stacks
+    stackOrder: ['stack-1', 'stack-2', 'stack-3']
   }
   
   export default initialData

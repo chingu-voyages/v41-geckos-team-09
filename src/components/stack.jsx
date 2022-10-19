@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Task from './task'
+import Card from './card'
 import { Droppable, Draggable } from 'react-beautiful-dnd'
 
 const Container = styled.div`
@@ -16,7 +16,7 @@ const Container = styled.div`
 const Title = styled.h3`
   padding: 8px;
 `
-const TaskList = styled.div`
+const CardList = styled.div`
   padding: 8px;
   transition: background-color 0.2s ease;
   background-color: ${props => (props.isDraggingOver ? 'skyblue' : 'inherit')};
@@ -25,36 +25,36 @@ const TaskList = styled.div`
 `
 class InnerList extends React.Component {
     shouldComponentUpdate(nextProps) {
-        if(nextProps.tasks === this.props.tasks) {
+        if(nextProps.cards === this.props.cards) {
             return false;
         }
         return true;
     }
     render() {
-        return this.props.tasks.map((task,index) => (
-            <Task key={task.id} task={task} index={index} />
+        return this.props.cards.map((card,index) => (
+            <Card key={card.id} card={card} index={index} />
         ));
     }
 }
-export default class Column extends React.Component {
+export default class Stack extends React.Component {
   render() {
     return (
-        <Draggable draggableId={this.props.column.id} index={this.props.index}>
+        <Draggable draggableId={this.props.stack.id} index={this.props.index}>
             {(provided) => (
                 <Container {...provided.draggableProps} ref={provided.innerRef}>
                     <Title{...provided.dragHandleProps}>
-                        {this.props.column.title}
+                        {this.props.stack.title}
                     </Title>
-                    <Droppable droppableId={this.props.column.id} type="task">
+                    <Droppable droppableId={this.props.stack.id} type="card">
                     {(provided, snapshot) => (
-                        <TaskList
+                        <CardList
                         ref={provided.innerRef}
                         {...provided.droppableProps}
                         isDraggingOver={snapshot.isDraggingOver}
                         >
-                            <InnerList tasks={this.props.tasks} />
+                            <InnerList cards={this.props.cards} />
                         {provided.placeholder}
-                        </TaskList>
+                        </CardList>
                     )}
                     </Droppable>
                 </Container>
