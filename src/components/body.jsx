@@ -14,9 +14,9 @@ const Container = styled.div`
 
 class InnerList extends React.PureComponent {
   render() {
-    const {stack, cardMap, index } = this.props;
-    const cards = stack.cardIds.map(cardId => cardMap[cardId]);
-    return <Stack stack={stack} cards={cards} index={index} />;
+    const {stack, taskMap, index } = this.props;
+    const tasks = stack.taskIds.map(taskId => taskMap[taskId]);
+    return <Stack stack={stack} tasks={tasks} index={index} />;
   }
 }
 
@@ -24,13 +24,13 @@ class Body extends React.Component {
   state = initialData
 
   onDragStart = (start, provided) => {
-    provided.announce(`You have lifted the card in position ${start.source.index + 1}`,
+    provided.announce(`You have lifted the task in position ${start.source.index + 1}`,
     );
   };
 
   onDragUpdate = (update, provided) => {
     const message = update.destination 
-      ? `You have moved the card to position ${update.destination.index + 1}`
+      ? `You have moved the task to position ${update.destination.index + 1}`
       : `You are currently not over a droppable area`;
   
       provided.announce(message);
@@ -38,9 +38,9 @@ class Body extends React.Component {
 
   onDragEnd = (result, provided) => {
     const message = result.destination
-        ? `You have moved the card from position
+        ? `You have moved the task from position
           ${result.source.index + 1} to ${result.destination.index + 1}`
-          : `The card has been returned to its starting position of
+          : `The task has been returned to its starting position of
             ${result.source.index + 1}`;
 
     provided.announce(message);
@@ -75,13 +75,13 @@ class Body extends React.Component {
     const finish = this.state.stacks[destination.droppableId]
 
     if (start === finish) {
-      const newCardIds = Array.from(start.cardIds)
-      newCardIds.splice(source.index, 1)
-      newCardIds.splice(destination.index, 0, draggableId)
+      const newTaskIds = Array.from(start.taskIds)
+      newTaskIds.splice(source.index, 1)
+      newTaskIds.splice(destination.index, 0, draggableId)
 
       const newStack = {
         ...start,
-        cardIds: newCardIds
+        taskIds: newTaskIds
       }
 
       const newState = {
@@ -97,18 +97,18 @@ class Body extends React.Component {
     }
 
     // Moving from one list to another
-    const startCardIds = Array.from(start.cardIds)
-    startCardIds.splice(source.index, 1)
+    const startTaskIds = Array.from(start.taskIds)
+    startTaskIds.splice(source.index, 1)
     const newStart = {
       ...start,
-      cardIds: startCardIds
+      taskIds: startTaskIds
     }
 
-    const finishCardIds = Array.from(finish.cardIds)
-    finishCardIds.splice(destination.index, 0, draggableId)
+    const finishTaskIds = Array.from(finish.taskIds)
+    finishTaskIds.splice(destination.index, 0, draggableId)
     const newFinish = {
       ...finish,
-      cardIds: finishCardIds
+      taskIds: finishTaskIds
     }
 
     const newState = {
@@ -141,15 +141,15 @@ class Body extends React.Component {
                 {this.state.stackOrder.map((stackId, index) => {
                   const stack = this.state.stacks[stackId]
                    /* eslint-disable no-unused-vars */
-                   const cards = stack.cardIds.map(
-                    cardId => this.state.cards[cardId]
+                   const tasks = stack.taskIds.map(
+                    taskId => this.state.tasks[taskId]
                   );
                   /* eslint-enable no-unused-vars */
                   return (
                     <InnerList 
                       key={stack.id} 
                       stack={stack} 
-                      cardMap={this.state.cards} 
+                      taskMap={this.state.tasks} 
                       index={index} 
                     />
                   );
