@@ -163,5 +163,4 @@ class Body extends React.Component {
   }
 }
 
-const rootElement = document.getElementById('root')
-ReactDOM.render(<Body />, rootElement)
+export default Body;
