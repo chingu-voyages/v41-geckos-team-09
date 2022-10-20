@@ -18,7 +18,7 @@ const Container = styled.div`
 
 export default class Card extends React.Component {
   render() {
-    const isDragDisabled = this.props.card.id === 'card-1'
+    const isDragDisabled = this.props.card.id === ''
     return (
       <Draggable
         draggableId={this.props.card.id}
