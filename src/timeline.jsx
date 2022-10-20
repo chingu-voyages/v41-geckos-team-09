@@ -4,7 +4,7 @@ import './timeline.css'
 
 export default function Timeline() {
   return (
-    <div>
+    <div className="timelineContainer">
       <p>Timeline will go here!</p>
     </div>
   )
