@@ -3,7 +3,7 @@ import './footer.css'
 
 const Footer = () => {
     return (
-<footer className ="dFlex">
+<footer >
             <h4>Travel2it is coded by 
                 <a className="custom-link" target="_blank" href='https://www.linkedin.com/in/sara-baqla/' title="Sara, a linkedin.com link"> Sara
                 </a>, 
