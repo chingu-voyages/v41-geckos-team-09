@@ -18,6 +18,7 @@ h4 {
 }
 
 .footerContainer {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     position: fixed;
     left:0;
     bottom:0;
