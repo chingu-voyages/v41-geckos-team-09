@@ -3,9 +3,12 @@ import Footer from './components/footer/footer.jsx'
 import './App.css'
 import Header from './components/header/header.jsx'
 import Stack from './components/stack/stack.jsx'
+import Card from './components/card/card.jsx'
 import Timeline from './components/timeline/timeline.jsx'
+import CardLogic from './TripLogic'
 
 import Draggable from 'react-draggable';
+
 
 
 function App() {
@@ -15,11 +18,7 @@ function App() {
 
       <Header />
 
-      <Draggable>
-        <div className="box">
-          <div>Move me around!</div>
-        </div>
-      </Draggable>
+      <Card title="Test" />
 
       <Timeline />
 
