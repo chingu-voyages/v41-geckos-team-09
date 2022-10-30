@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/header/header.jsx';
 import Stack from './components/stack/stack.jsx';
 import Timeline from './components/timeline/timeline.jsx';
+import Welcome from './components/welcome/welcome.jsx';
 
 import Draggable from 'react-draggable';
 
@@ -14,9 +15,12 @@ import { ChakraProvider } from '@chakra-ui/react';
 
 
 function App() {
-const [currentView, setCurrentView] = useState('Timeline');
+const [currentView, setCurrentView] = useState('Welcome');
 
 const renderView = () => {
+  if (currentView === 'Welcome') {
+    return <Welcome />;
+  }
   if (currentView === 'Timeline') {
     return <Timeline />;
   }

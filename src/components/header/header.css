@@ -9,16 +9,19 @@ header {
   background: #FAF9F9;
 }
 
-a {
+.custom-headerLink{
   text-decoration: none;
   padding: 2rem;
   color: #1679ea;
 }
 
-a:hover {
+.custom-headerLink:hover {
   color: #aa5d89;
-
   font-size: larger;
+}
+
+#logoLink {
+  padding:0;
 }
 
 .dFlex {
@@ -28,7 +31,7 @@ a:hover {
 
 .header-logo {
   max-height: 4rem;
-  padding: 1rem
+  padding: 2px;
 }
 
 /* .nav {
@@ -36,10 +39,9 @@ a:hover {
 } */
 
 .links {
-
   list-style: none;
   display: inline-flex;
-  margin-top: 2.2rem;
+  margin-top: 2rem;
 }
 
 
