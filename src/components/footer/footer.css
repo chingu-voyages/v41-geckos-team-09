@@ -10,6 +10,14 @@ h4 {
     color:dimgrey
 }
 
+.icon {
+    display: inline;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: -0.125em;
+    margin-left:4px
+}
+
 /* why won't the hover text change to indianred? */
 /* I realise Ian will change the colours and style */
 .footer-link {
@@ -25,4 +33,5 @@ h4 {
     bottom:0;
     right:0;
     text-align: center;
+    padding: 10px
 }
