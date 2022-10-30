@@ -8,21 +8,20 @@ export default function Header() {
       <img className='header-logo' src={logo} alt='travel logo' />
       <div className='nav'>
         <ul className='links'>
-          <li><a className="custom-link-header" href='https://github.com/chingu-voyages/v41-geckos-team-09'>Link 1</a></li>
-          <li><a className="custom-link-header" href='https://github.com/chingu-voyages/v41-geckos-team-09'>Link 2</a></li>
-          <li><a className="custom-link-header" href='https://github.com/chingu-voyages/v41-geckos-team-09'>Link 3</a></li>
-          <li><a className="custom-link-header" href='https://github.com/chingu-voyages/v41-geckos-team-09'>Link 4</a></li>
+          <li><a href='#'>Timeline View</a></li>
+          <li><a href='#'>Stack View</a></li>
+          <li><a href='#'>Share</a></li>
+          <li><a className='hidden' href='#'>Trip Name</a></li>
         </ul>
 
         <div className='custom-select'>
-        <select className='menu'>
-          <option value='' selected='selected'>Menu</option>
+          <select className='menu'>
+            <option value='' selected='selected'>My Trip</option>
 
-          <option value='https://github.com/chingu-voyages/v41-geckos-team-09'>Link 1</option>
-          <option value='https://github.com/chingu-voyages/v41-geckos-team-09'>Link 2</option>
-          <option value='https://github.com/chingu-voyages/v41-geckos-team-09'>Link 3</option>
-          <option value='https://github.com/chingu-voyages/v41-geckos-team-09'>Link 4</option>
-        </select>
+            <option value='#'>Timeline View</option>
+            <option value='#'>Stack View</option>
+            <option value='#'>Share</option>
+          </select>
         </div>
       </div>
 

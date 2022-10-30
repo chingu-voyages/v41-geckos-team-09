@@ -1,3 +1,11 @@
+.icon {
+    important:  !important;
+    width: 2em;
+    height: 2em;
+    vertical-align: -0.125em;
+    margin-left:4px;
+}
+
 h4 {
     color:dimgrey
 }
@@ -12,12 +20,14 @@ h4 {
 
 /* why won't the hover text change to indianred? */
 /* I realise Ian will change the colours and style */
-.custom-link:link, .custom-link:visited, .custom-link:hover, .custom-link:active {
-    color:indianred;
+.footer-link {
     padding: 0;
+    text-decoration: none;
 }
 
 .footerContainer {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
     position: fixed;
     left:0;
     bottom:0;
