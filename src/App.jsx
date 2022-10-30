@@ -6,25 +6,31 @@ import Stack from './components/stack/stack'
 
 import Draggable from 'react-draggable';
 
+import * as React from 'react'
+
+// 1. import `ChakraProvider` component
+import { ChakraProvider } from '@chakra-ui/react'
 
 function App() {
-
+  // 2. Wrap ChakraProvider at the root of your app
   return (
-    <div className="App">
+    <ChakraProvider>
+      <div className="App">
 
-      <Header />
+        <Header />
 
-      <Draggable>
-        <div className="box">
-          <div>Move me around!</div>
-        </div>
-      </Draggable>
+        <Draggable>
+          <div className="box">
+            <div>Move me around!</div>
+          </div>
+        </Draggable>
 
-      <Stack />
+        <Stack />
 
-      <Footer />
+        <Footer />
 
-    </div>
+      </div>
+    </ChakraProvider>
   )
 }
 
