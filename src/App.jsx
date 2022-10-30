@@ -1,12 +1,8 @@
-import { useState } from 'react'
 import Footer from './components/footer/footer.jsx'
 import './App.css'
 import Header from './components/header/header'
-import Stack from './components/stack/stack'
-
-import Draggable from 'react-draggable';
-
-import * as React from 'react'
+// import Board from './components/board/board'
+import React from 'react'
 
 // 1. import `ChakraProvider` component
 import { ChakraProvider } from '@chakra-ui/react'
@@ -19,13 +15,7 @@ function App() {
 
         <Header />
 
-        <Draggable>
-          <div className="box">
-            <div>Move me around!</div>
-          </div>
-        </Draggable>
-
-        <Stack />
+        {/* <Board /> */}
 
         <Footer />
 
