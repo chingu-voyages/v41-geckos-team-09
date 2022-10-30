@@ -5,6 +5,14 @@ class TripLogic {
     constructor() {
         stacks = {};
     }
+
+    addStack() {
+
+    }
+
+    deleteStack() {
+        
+    }
 };
 
 class CardLogic {
@@ -49,6 +57,18 @@ class StackLogic {
     constructor() {
         cards = {};
     }
+
+    addCardToStack(uuid) {
+
+    }
+
+    removeCardFromStack(uuid) {
+
+    }
 };
+
+function getCardByUUID(uuid) {
+    /* return matching object of card class or null */
+}
 
 export default { TripLogic, CardLogic, StackLogic };
