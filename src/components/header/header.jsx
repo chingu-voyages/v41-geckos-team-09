@@ -5,12 +5,12 @@ import logo from '../../images/logo-1.png';
 export default function Header({currentView, handleViewChange}) {
   return (
     <header className='dFlex'>
-      <img className='header-logo' src={logo} alt='travel logo' />
+      <a id='logoLink' href='#Welcome' onClick={() => handleViewChange('Welcome')}><img className='header-logo' src={logo} alt='travel logo' /></a>
       <div className='nav'>
         <ul className='links'>
-          <li><a href='#Timeline' onClick={() => handleViewChange('Timeline')}>Timeline View</a></li>
-          <li><a href='#Stack' onClick={() => handleViewChange('Stack')}>Stack View</a></li>
-          <li><a href='#'>Share</a></li>
+          <li><a className='custom-headerLink' href='#Timeline' onClick={() => handleViewChange('Timeline')}>Timeline View</a></li>
+          <li><a className='custom-headerLink' href='#Stack' onClick={() => handleViewChange('Stack')}>Stack View</a></li>
+          <li><a className='custom-headerLink' href='#'>Share</a></li>
           {/* dynamially render Trip Name when user names file */}
           <li><a className='hidden' href='#'>Trip Name</a></li>
         </ul>
