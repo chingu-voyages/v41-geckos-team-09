@@ -1,7 +1,7 @@
 /* https://egghead.io/courses/beautiful-and-accessible-drag-and-drop-with-react-beautiful-dnd */
 
 import React from 'react'
-import ReactDOM from 'react-dom'
+// import ReactDOM from 'react-dom'
 import '@atlaskit/css-reset'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import styled from 'styled-components'

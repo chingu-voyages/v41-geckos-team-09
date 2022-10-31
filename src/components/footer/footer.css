@@ -1,9 +1,8 @@
 .icon {
-    important:  !important;
     width: 2em;
     height: 2em;
     vertical-align: -0.125em;
-    margin-left:4px;
+    margin-left:4px
 }
 
 h4 {
