@@ -2,8 +2,8 @@ import { React, useState } from 'react';
 import Footer from './components/footer/footer.jsx';
 import './App.css';
 import Header from './components/header/header.jsx';
-import Stack from './components/stack/stack.jsx';
-import Timeline from './components/timeline/timeline.jsx';
+import Board from './components/board/board.jsx';
+// import Timeline from './components/timeline/timeline.jsx';
 import Welcome from './components/welcome/welcome.jsx';
 import { ChakraProvider } from '@chakra-ui/react';
 
@@ -15,11 +15,11 @@ const renderView = () => {
   if (currentView === 'Welcome') {
     return <Welcome />;
   }
-  if (currentView === 'Timeline') {
-    return <Timeline />;
-  }
-  if (currentView === 'Stack') {
-    return <Stack />;
+  // if (currentView === 'Timeline') {
+  //   return <Timeline />;
+  // }
+  if (currentView === 'Board') {
+    return <Board />;
     // return <Timeline />;
   }
 };
@@ -34,7 +34,6 @@ const renderView = () => {
 
         <Header currentView={currentView} handleViewChange={handleViewChange}/>
         {renderView()}
-
         <Footer />
 
       </div>
