@@ -1,13 +1,4 @@
-.icon {
-    display: inline;
-    width: 1.5em;
-    height: 1.5em;
-    vertical-align: -0.125em;
-    margin-left:4px
-}
 
-/* why won't the hover text change to indianred? */
-/* I realise Ian will change the colours and style */
 .footer-link {
     padding: 0;
     text-decoration: none;
