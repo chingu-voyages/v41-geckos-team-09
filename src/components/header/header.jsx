@@ -12,19 +12,7 @@ export default function Header({currentView, handleViewChange}) {
           <li><a className='custom-headerLink' href='#Welcome' onClick={() => handleViewChange('Welcome')}>Welcome View</a></li>
           <li><a className='custom-headerLink' href='#Board' onClick={() => handleViewChange('Board')}>Board View</a></li>
           <li><a className='custom-headerLink' href='#'>Share</a></li>
-          {/* dynamially render Trip Name when user names file */}
-          {/* <li><a className='hidden' href='#'>Trip Name</a></li> */}
         </ul>
-
-        {/* <div className='custom-select'>
-          <select className='menu'>
-            <option value='' selected='selected'>My Trip</option>
-
-            <option value='#'>Wecome View</option>
-            <option value='#'>Board View</option>
-            <option value='#'>Share</option>
-          </select>
-        </div> */}
       </Box>
     </header>
   )
