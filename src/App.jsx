@@ -30,9 +30,8 @@ const renderView = () => {
         <Header currentView={currentView} handleViewChange={handleViewChange}/>
         {renderView()}
         <Footer />
-
       </Box>
-      )
+    )
 }
 
 export default App

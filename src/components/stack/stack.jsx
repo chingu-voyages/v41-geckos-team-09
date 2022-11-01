@@ -2,21 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import Card from '../card/card'
 import { Droppable, Draggable } from 'react-beautiful-dnd'
+import { Box, Heading } from '@chakra-ui/react'
 
-const Container = styled.div`
-  margin: 8px;
-  border: 1px solid darkgrey;
-  background-color: inherit;
-  border-radius: 2px;
-  width: 220px;
-
-  display: flex;
-  flex-direction: column;
-`
-const Title = styled.h3`
-  padding: 8px;
-  color:inherit;
-`
 const CardList = styled.div`
   padding: 8px;
   transition: background-color 0.2s ease;
@@ -42,10 +29,20 @@ export default class Stack extends React.Component {
     return (
         <Draggable draggableId={this.props.stack.id} index={this.props.index}>
             {(provided) => (
-                <Container {...provided.draggableProps} ref={provided.innerRef}>
-                    <Title{...provided.dragHandleProps}>
+                <Box minW={'220px'}
+                m={'8px'} 
+                border={'1px'} 
+                bg={'inherit'} 
+                borderRadius={'2px'}
+                display={'flex'}
+                flexDirection={'column'}
+                {...provided.draggableProps} ref={provided.innerRef}>
+                    <Heading
+                    padding={'8px'}
+                    color={'inherit'}
+                    {...provided.dragHandleProps}>
                         {this.props.stack.title}
-                    </Title>
+                    </Heading>
                     <Droppable droppableId={this.props.stack.id} type="card">
                     {(provided, snapshot) => (
                         <CardList
@@ -58,7 +55,7 @@ export default class Stack extends React.Component {
                         </CardList>
                     )}
                     </Droppable>
-                </Container>
+                </Box>
             )}
         </Draggable>
     )
