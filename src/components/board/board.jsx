@@ -133,7 +133,7 @@ export default class Board extends React.Component {
               <Box
                 {...provided.droppableProps}
                 ref={provided.innerRef}
-                 display="flex">
+                 display="flex" alignItems="center" justifyContent="center">
                 {this.state.stackOrder.map((stackId, index) => {
                   const stack = this.state.stacks[stackId]
                    /* eslint-disable no-unused-vars */
