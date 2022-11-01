@@ -7,9 +7,15 @@ header {
   width: 100%;
 }
 
+/* why is this necessary to make the header all on one line? */
+li {
+  margin-top: .35em;
+}
+
 .custom-headerLink{
   text-decoration: none;
   padding: 2rem;
+  padding-top: 2em;
 }
 
 .custom-headerLink:hover {
@@ -22,7 +28,6 @@ header {
 
 .dFlex {
   display: flex;
-
 }
 
 .header-logo {
@@ -37,7 +42,6 @@ header {
 .links {
   list-style: none;
   display: inline-flex;
-  margin-top: 2rem;
 }
 
 
@@ -47,14 +51,12 @@ header select {
 
 
 .custom-select {
-
   position: relative;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
 }
 
 .menu {
-
   margin-top: 30%;
   margin-left: 50%;
   border-radius: 5px;
