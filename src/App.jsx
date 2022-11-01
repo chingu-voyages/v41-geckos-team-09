@@ -26,8 +26,6 @@ const renderView = () => {
 
   // 2. Wrap ChakraProvider at the root of your app
   return (
-    <ChakraProvider>
-      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <div className="App">
       <ToggleMode display="block" mt="md">Click me!</ToggleMode>
 
@@ -36,8 +34,7 @@ const renderView = () => {
         <Footer />
 
       </div>
-    </ChakraProvider>
-  )
+      )
 }
 
 export default App
