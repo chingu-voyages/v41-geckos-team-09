@@ -5,11 +5,12 @@ import Header from './components/header/header.jsx'
 import Stack from './components/stack/stack.jsx'
 import Card from './components/card/card.jsx'
 import Timeline from './components/timeline/timeline.jsx'
-import CardLogic from './TripLogic'
+import { CardLogic, TripLogic, StackLogic } from './TripLogic.js'
 
 import Draggable from 'react-draggable';
 
-
+let trip = new TripLogic();
+trip.addStack("Stack One");
 
 function App() {
 
@@ -17,9 +18,10 @@ function App() {
     <div className="App">
 
       <Header />
-
-      <Card title="Test" />
-
+    
+        <span>
+            <Card title="Test" />
+        </span>
       <Timeline />
 
       <Footer />

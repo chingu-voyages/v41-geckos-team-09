@@ -1,15 +1,17 @@
 import React from 'react'
+import './card.css'
+import { CardLogic } from '../../TripLogic';
+
+/* display functions */
+
 
 const Card = (props) => {
     return (
-        <div>
+        <div className='card'>
             <h1>{props.title}</h1>
             <CardExpensesView/>
             <CardInfoView />
             <CardTimesView/>
-            <button>Expenses</button>
-            <button>Info</button>
-            <button>Times</button>
         </div>
     );
 }
@@ -19,7 +21,7 @@ const Card = (props) => {
 const CardExpensesView = (props) => {
     return (
         <div>
-
+                test
         </div>
     )
 }
