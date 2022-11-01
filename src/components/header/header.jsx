@@ -1,12 +1,13 @@
 import React from 'react';
 import './header.css';
 import logo from '../../images/logo-1.png';
-
+import { Box } from '@chakra-ui/react'
+ 
 export default function Header({currentView, handleViewChange}) {
   return (
     <header className='dFlex'>
       <a id='logoLink' href='#Welcome' onClick={() => handleViewChange('Welcome')}><img className='header-logo' src={logo} alt='travel logo' /></a>
-      <div className='nav'>
+      <Box className='nav'>
         <ul className='links'>
           <li><a className='custom-headerLink' href='#Welcome' onClick={() => handleViewChange('Welcome')}>Welcome View</a></li>
           <li><a className='custom-headerLink' href='#Board' onClick={() => handleViewChange('Board')}>Board View</a></li>
@@ -24,8 +25,7 @@ export default function Header({currentView, handleViewChange}) {
             <option value='#'>Share</option>
           </select>
         </div> */}
-      </div>
-
+      </Box>
     </header>
   )
 }
