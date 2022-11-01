@@ -37,7 +37,7 @@ export default class Card extends React.Component {
           // >
           //   {this.props.card.content}
           // </Container>
-          <Box bg='grey' px={ 4 } m={ .5 } borderRadius='sm'
+          <Box bg='#DA0A5B' textColor='#ffffff' px={ 4 } m={ .5 } borderRadius='sm'
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}
