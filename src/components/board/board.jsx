@@ -6,10 +6,7 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import styled from 'styled-components'
 import initialData from '../initial-data'
 import Stack from '../stack/stack'
-
-const Container = styled.div`
-  display:flex;
-`
+import { Box, Flex } from '@chakra-ui/react'
 
 class InnerList extends React.PureComponent {
   render() {
@@ -133,10 +130,10 @@ export default class Board extends React.Component {
           type="stack"
           >
             {provided => (
-              <Container
+              <Box
                 {...provided.droppableProps}
                 ref={provided.innerRef}
-              >
+                 display="flex">
                 {this.state.stackOrder.map((stackId, index) => {
                   const stack = this.state.stacks[stackId]
                    /* eslint-disable no-unused-vars */
@@ -154,7 +151,7 @@ export default class Board extends React.Component {
                   );
                 })}
                 {provided.placeholder}
-              </Container>
+              </Box>
             )}
         </Droppable>
       </DragDropContext>
