@@ -1,19 +1,25 @@
 import React from 'react';
 import './header.css';
 import logo from '../../images/logo-1.png';
-import { Box } from '@chakra-ui/react'
- 
+import { Box, Flex, Spacer, Link, useColorMode } from '@chakra-ui/react'
+import ToggleMode from '../toggle.jsx';
+import theme from '../theme'
+
 export default function Header({currentView, handleViewChange}) {
   return (
-    <header className='dFlex'>
-      <a id='logoLink' href='#Welcome' onClick={() => handleViewChange('Welcome')}><img className='header-logo' src={logo} alt='travel logo' /></a>
-      <Box className='nav'>
-        <ul className='links'>
-          <li><a className='custom-headerLink' href='#Welcome' onClick={() => handleViewChange('Welcome')}>Welcome View</a></li>
-          <li><a className='custom-headerLink' href='#Board' onClick={() => handleViewChange('Board')}>Board View</a></li>
-          <li><a className='custom-headerLink' href='#'>Share</a></li>
-        </ul>
-      </Box>
+    <header>
+      {/* bg={'#FAFAFA'} */}
+      <Flex >
+        <Box><Link id='logoLink' href='#Welcome' onClick={() => handleViewChange('Welcome')}><img className='header-logo' src={logo} alt='travel logo' /></Link></Box>
+        <Spacer />
+        <Box p={'1em'}><Link _hover={{ fontSize:'xl', color: '#1978E4' }}  href='#Welcome' onClick={() => handleViewChange('Welcome')}>Welcome View</Link></Box>
+        <Spacer />
+        <Box p={'1em'} ><Link _hover={{ fontSize:'xl', color: '#1978E4' }} href='#Board' onClick={() => handleViewChange('Board')}>Board View</Link></Box>
+        <Spacer />
+        <Box p={'1em'} ><Link _hover={{ fontSize:'xl', color: '#1978E4' }} href='#'>Share</Link></Box>
+        <Spacer />
+        <Box><ToggleMode mt="md">Click me!</ToggleMode></Box>
+      </Flex>
     </header>
   )
 }

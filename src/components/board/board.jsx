@@ -3,10 +3,9 @@
 import React from 'react'
 import '@atlaskit/css-reset'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
-import styled from 'styled-components'
 import initialData from '../initial-data'
 import Stack from '../stack/stack'
-import { Box, Flex } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 
 class InnerList extends React.PureComponent {
   render() {

@@ -5,7 +5,8 @@ import { chakra, Box, Heading } from '@chakra-ui/react'
 
 const CardList = chakra(Box, {
     baseStyle: {
-      background: "black",
+      background: "#272E3F",
+      h:"200px",
     },
   })
 
