@@ -2,15 +2,20 @@ import React from 'react'
 import styled from 'styled-components'
 import Card from '../card/card'
 import { Droppable, Draggable } from 'react-beautiful-dnd'
-import { Box, Heading } from '@chakra-ui/react'
+import { chakra, Box, Heading } from '@chakra-ui/react'
 
-const CardList = styled.div`
-  padding: 8px;
-  transition: background-color 0.2s ease;
-  background-color: ${props => (props.isDraggingOver ? 'darkgrey' : 'inherit')};
-  flex-grow: 1;
-  min-height: 100px;
-`
+const CardList = chakra(Box, {
+    baseStyle: {
+      background: "black",
+    },
+  })
+
+// const CardList = chakra(Heading, {
+//     baseStyle: {
+//       background: "black",
+//     },
+//   })
+
 class InnerList extends React.Component {
     shouldComponentUpdate(nextProps) {
         if(nextProps.cards === this.props.cards) {
