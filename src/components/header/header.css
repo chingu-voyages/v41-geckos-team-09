@@ -74,7 +74,9 @@ header select {
   display: none;
 }
 
-
+.shareIcon {
+  margin: 15px 5px;
+ }
 
 /* MEDIA QUERIES */
 
@@ -105,5 +107,4 @@ header select {
   header .links {
     display: none;
   }
-
-
+}

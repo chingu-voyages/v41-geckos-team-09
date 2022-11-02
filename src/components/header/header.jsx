@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './header.css';
 import logo from '../../images/logo-1.png';
 
-export default function Header({currentView, handleViewChange}) {
+import {
+  // EmailShareButton,
+  // FacebookSharebutton,
+  // WhatsappShareButton,
+
+  EmailIcon,
+  FacebookIcon,
+  WhatsappIcon,
+} from "react-share";
+
+import Share from '../share/Share'
+
+export default function Header({ currentView, handleViewChange }) {
   return (
     <header className='dFlex'>
       <a id='logoLink' href='#Welcome' onClick={() => handleViewChange('Welcome')}><img className='header-logo' src={logo} alt='travel logo' /></a>
@@ -10,9 +22,12 @@ export default function Header({currentView, handleViewChange}) {
         <ul className='links'>
           <li><a className='custom-headerLink' href='#Timeline' onClick={() => handleViewChange('Timeline')}>Timeline View</a></li>
           <li><a className='custom-headerLink' href='#Stack' onClick={() => handleViewChange('Stack')}>Stack View</a></li>
-          <li><a className='custom-headerLink' href='#'>Share</a></li>
-          {/* dynamially render Trip Name when user names file */}
+          {/* <li><a className='custom-headerLink' href='#'>Share</a></li>  */}
+          {/* dynamically render Trip Name when user names file */}
           <li><a className='hidden' href='#'>Trip Name</a></li>
+          <li className='shareIcon'><EmailIcon size={45} borderRadius={15} /></li>
+          <li className='shareIcon'><FacebookIcon size={45} borderRadius={15} /></li>
+          <li className='shareIcon'><WhatsappIcon size={45} borderRadius={15} /></li>
         </ul>
 
         <div className='custom-select'>
