@@ -4,7 +4,7 @@ import './App.css';
 import Header from './components/header/header.jsx';
 import Board from './components/board/board.jsx';
 import Welcome from './components/welcome/welcome.jsx';
-import { Box } from '@chakra-ui/react';
+import { Box, Flex, Spacer } from '@chakra-ui/react';
 import ToggleMode from './components/toggle.jsx';
 
 function App() {
@@ -25,8 +25,12 @@ const renderView = () => {
   // 2. Wrap ChakraProvider at the root of your app
   return (
       <Box className="App">
-      <ToggleMode display="block" mt="md">Click me!</ToggleMode>
-
+      <Flex>
+        <Spacer />
+        <Box>
+        <ToggleMode mt="md">Click me!</ToggleMode>
+        </Box>
+      </Flex>
         <Header currentView={currentView} handleViewChange={handleViewChange}/>
         {renderView()}
         <Footer />
