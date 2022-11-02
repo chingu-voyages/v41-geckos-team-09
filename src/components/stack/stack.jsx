@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import Card from '../card/card'
 import { Droppable, Draggable } from 'react-beautiful-dnd'
 import { chakra, Box, Heading } from '@chakra-ui/react'
@@ -9,12 +8,6 @@ const CardList = chakra(Box, {
       background: "black",
     },
   })
-
-// const CardList = chakra(Heading, {
-//     baseStyle: {
-//       background: "black",
-//     },
-//   })
 
 class InnerList extends React.Component {
     shouldComponentUpdate(nextProps) {
