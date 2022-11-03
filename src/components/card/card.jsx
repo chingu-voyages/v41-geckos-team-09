@@ -27,20 +27,20 @@ export default function Card(props){
       >
         {(provided, snapshot) => (
           
-          <div>
+          <Box>
             <input id={props.card.id} bg='#DA0A5B' textColor='#FAFAFA' px={ 4 } m={ .5 } borderRadius='sm'
             value={name}
             onChange={(e)=>handleChangeFunc(e,props.card.id)}
           />
-            <div
+            <Box
               {...provided.draggableProps}
               {...provided.dragHandleProps}
               ref={provided.innerRef}
               isDragging={snapshot.isDragging}
               aria-roledescription="Press space bar to lift the card"
             
-            >drag</div>
-          </div>
+            >drag</Box>
+          </Box>
         )}
       </Draggable>
     )
