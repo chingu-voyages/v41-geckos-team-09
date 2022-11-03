@@ -9,13 +9,13 @@ header {
   background: #FAF9F9;
 }
 
-.custom-headerLink{
+Link{
   text-decoration: none;
   padding: 2rem;
   color: #1679ea;
 }
 
-.custom-headerLink:hover {
+Link:hover {
   color: #aa5d89;
   font-size: larger;
 }
