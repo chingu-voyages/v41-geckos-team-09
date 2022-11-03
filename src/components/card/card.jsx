@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Draggable } from 'react-beautiful-dnd'
-import { Box, Flex, Spacer } from '@chakra-ui/react'
+import { Box, Flex, Spacer, Input } from '@chakra-ui/react'
 import { DragHandleIcon } from '@chakra-ui/icons'
 
 export default function Card(props){
@@ -37,8 +37,8 @@ export default function Card(props){
           >
             <DragHandleIcon bg='grey' p='.1em'/><Spacer />
           </Box>
-          <Box textColor='grey' border='.1em' px={ .2 } m={ .5 } >
-            <input id={props.card.id}
+          <Box textColor='dark'  m={ .5 } >
+            <Input focusBorderColor='#DA0A5B' size='sm' bg="AFAFAF" id={props.card.id} 
             value={name}
             onChange={(e)=>handleChangeFunc(e,props.card.id)}
           />
