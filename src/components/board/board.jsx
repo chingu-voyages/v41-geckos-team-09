@@ -141,12 +141,15 @@ export default class Board extends React.Component {
                   );
                   /* eslint-enable no-unused-vars */
                   return (
+                    <>
+                    {console.log('stack Order ', this.state.stackOrder)}
                     <InnerList 
                       key={stack.id} 
                       stack={stack} 
                       cardMap={this.state.cards} 
                       index={index} 
                     />
+                    </>
                   );
                 })}
                 {provided.placeholder}
