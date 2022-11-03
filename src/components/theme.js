@@ -9,7 +9,12 @@ const config = {
   useSystemColorMode: false,
 }
 
+const button = {
+  size: 'xs',
+  bg: '#aaaaaa'
+}
+
 // 3. extend the theme
-const theme = extendTheme({ config })
+const theme = extendTheme({ config, button })
 
 export default theme

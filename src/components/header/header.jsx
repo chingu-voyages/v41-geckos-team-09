@@ -1,8 +1,8 @@
-import React from 'react';
-import './header.css';
-import logo from '../../images/logo-1.png';
+import React from 'react'
+import './header.css'
+import logo from '../../images/logo-1.png'
 import { Box, Flex, Spacer, Link, useColorMode } from '@chakra-ui/react'
-import ToggleMode from '../toggle.jsx';
+import ToggleMode from '../toggle.jsx'
 import theme from '../theme'
 
 export default function Header({currentView, handleViewChange}) {
@@ -18,7 +18,7 @@ export default function Header({currentView, handleViewChange}) {
         <Spacer />
         <Box p={'1em'} ><Link _hover={{ fontSize:'xl', color: '#1978E4' }} href='#'>Share</Link></Box>
         <Spacer />
-        <Box><ToggleMode mt="md">Click me!</ToggleMode></Box>
+        <Box><ToggleMode mt="md">color mode</ToggleMode></Box>
       </Flex>
     </header>
   )
