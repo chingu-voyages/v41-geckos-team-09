@@ -6,7 +6,8 @@ import stackHeading from '../theme'
 
 const CardList = chakra(Box, {
     baseStyle: {
-      background: "#272E3F",
+      background: "#AAAAAA",
+      border: ".01em solid",
       h:"200px",
     },
   })

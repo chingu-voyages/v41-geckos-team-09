@@ -27,8 +27,8 @@ export default function Card(props){
       >
         {(provided, snapshot) => (
           
-          <Box>
-            <input id={props.card.id} bg='#DA0A5B' textColor='#FAFAFA' px={ 4 } m={ .5 } borderRadius='sm'
+          <Box bg='#FAFADD' textColor='grey' border='.1em' borderRadius='sm'  px={ 4 } m={ .5 } >
+            <input id={props.card.id} 
             value={name}
             onChange={(e)=>handleChangeFunc(e,props.card.id)}
           />
