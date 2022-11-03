@@ -2,6 +2,7 @@ import React from 'react'
 import Card from '../card/card'
 import { Droppable, Draggable } from 'react-beautiful-dnd'
 import { chakra, Box, Heading } from '@chakra-ui/react'
+import stackHeading from '../theme'
 
 const CardList = chakra(Box, {
     baseStyle: {
@@ -36,12 +37,16 @@ export default class Stack extends React.Component {
                 display={'flex'}
                 flexDirection={'column'}
                 {...provided.draggableProps} ref={provided.innerRef}>
-                    <Heading
+                    {/* <Heading
                     padding={'8px'}
                     color={'inherit'}
                     {...provided.dragHandleProps}>
                         {this.props.stack.title}
-                    </Heading>
+                    </Heading> */}
+                    <stackHeading
+                        {...provided.dragHandleProps}>
+                        {this.props.stack.title}
+                    </stackHeading>
                     <Droppable droppableId={this.props.stack.id} type="card">
                     {(provided, snapshot) => (
                         <CardList

@@ -11,10 +11,17 @@ const config = {
 
 const button = {
   size: 'xs',
-  bg: '#aaaaaa'
+  bg: '#BBBBBB'
+}
+
+const stackHeading = {
+  size: 'lg',
+  padding: '80px',
+  margin: '20px',
+  color: 'inherit'
 }
 
 // 3. extend the theme
-const theme = extendTheme({ config, button })
+const theme = extendTheme({ config, button, stackHeading })
 
 export default theme
