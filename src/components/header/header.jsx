@@ -3,18 +3,20 @@ import './header.css';
 import logo from '../../images/logo-1.png';
 
 import {
-  // EmailShareButton,
-  // FacebookSharebutton,
-  // WhatsappShareButton,
-
+  EmailShareButton,
+  FacebookShareButton,
+  WhatsappShareButton,
   EmailIcon,
   FacebookIcon,
   WhatsappIcon,
 } from "react-share";
 
-import Share from '../share/Share'
-
 export default function Header({ currentView, handleViewChange }) {
+  //sharebutton urls
+const facebookURL = 'https://www.facebook.com/';
+const whatsAppURL = 'https://www.whatsapp.com/';
+// const emailURL = ''
+
   return (
     <header className='dFlex'>
       <a id='logoLink' href='#Welcome' onClick={() => handleViewChange('Welcome')}><img className='header-logo' src={logo} alt='travel logo' /></a>
@@ -25,9 +27,16 @@ export default function Header({ currentView, handleViewChange }) {
           {/* <li><a className='custom-headerLink' href='#'>Share</a></li>  */}
           {/* dynamically render Trip Name when user names file */}
           <li><a className='hidden' href='#'>Trip Name</a></li>
-          <li className='shareIcon'><EmailIcon size={45} borderRadius={15} /></li>
-          <li className='shareIcon'><FacebookIcon size={45} borderRadius={15} /></li>
-          <li className='shareIcon'><WhatsappIcon size={45} borderRadius={15} /></li>
+          <li className='shareIcon'>
+            {/* Email share button currently NOT functional */}
+            <EmailShareButton><EmailIcon size={45} borderRadius={15} /></EmailShareButton>
+          </li>
+          <li className='shareIcon'>
+            <FacebookShareButton url={facebookURL}><FacebookIcon size={45} borderRadius={15} /></FacebookShareButton>
+          </li>
+          <li className='shareIcon'>
+            <WhatsappShareButton url={whatsAppURL}><WhatsappIcon size={45} borderRadius={15} /></WhatsappShareButton>
+          </li>
         </ul>
 
         <div className='custom-select'>
