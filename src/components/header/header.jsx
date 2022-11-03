@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './header.css';
 import logo from '../../images/logo-1.png';
+import { Box, Select } from '@chakra-ui/react'
 
 import {
   EmailShareButton,
@@ -18,9 +19,9 @@ const whatsAppURL = 'https://www.whatsapp.com/';
 // const emailURL = ''
 
   return (
-    <header className='dFlex'>
+    <Box className='dFlex'>
       <a id='logoLink' href='#Welcome' onClick={() => handleViewChange('Welcome')}><img className='header-logo' src={logo} alt='travel logo' /></a>
-      <div className='nav'>
+      <Box className='nav'>
         <ul className='links'>
           <li><a className='custom-headerLink' href='#Timeline' onClick={() => handleViewChange('Timeline')}>Timeline View</a></li>
           <li><a className='custom-headerLink' href='#Stack' onClick={() => handleViewChange('Stack')}>Stack View</a></li>
@@ -39,17 +40,17 @@ const whatsAppURL = 'https://www.whatsapp.com/';
           </li>
         </ul>
 
-        <div className='custom-select'>
-          <select className='menu'>
-            <option value='' selected='selected'>My Trip</option>
-
+        {/* <Box className='custom-select'> */}
+        <Box>
+          {/* <Select className='menu'> */}
+          <Select placeholder='My Trip'>
             <option value='#'>Timeline View</option>
             <option value='#'>Stack View</option>
             <option value='#'>Share</option>
-          </select>
-        </div>
-      </div>
+          </Select>
+        </Box>
+      </Box>
 
-    </header>
+    </Box>
   )
 }
