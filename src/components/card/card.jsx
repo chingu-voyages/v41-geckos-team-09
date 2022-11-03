@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Draggable } from 'react-beautiful-dnd'
-import { Box } from '@chakra-ui/react'
+import { Box, Flex, Spacer } from '@chakra-ui/react'
+import { DragHandleIcon } from '@chakra-ui/icons'
 
 export default function Card(props){
 
@@ -26,21 +27,23 @@ export default function Card(props){
         isDragDisabled={isDragDisabled}
       >
         {(provided, snapshot) => (
-          
-          <Box bg='#FAFADD' textColor='grey' border='.1em' borderRadius='sm'  px={ 4 } m={ .5 } >
+          <Flex bg='red'>
+          <Box bg='#FAFAFA'
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            ref={provided.innerRef}
+            isDragging={snapshot.isDragging}
+            aria-roledescription="Press space bar to lift the card"
+          >
+            <DragHandleIcon bg='white'/><Spacer />
+          </Box>
+          <Box textColor='grey' border='.1em' borderRadius='sm'  px={ .2 } m={ .5 } >
             <input id={props.card.id} 
             value={name}
             onChange={(e)=>handleChangeFunc(e,props.card.id)}
           />
-            <Box
-              {...provided.draggableProps}
-              {...provided.dragHandleProps}
-              ref={provided.innerRef}
-              isDragging={snapshot.isDragging}
-              aria-roledescription="Press space bar to lift the card"
-            
-            >drag</Box>
           </Box>
+          </Flex>
         )}
       </Draggable>
     )
