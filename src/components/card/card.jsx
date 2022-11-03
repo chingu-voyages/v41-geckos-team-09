@@ -1,29 +1,47 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Draggable } from 'react-beautiful-dnd'
 import { Box } from '@chakra-ui/react'
 
-export default class Card extends React.Component {
-  render() {
-    const isDragDisabled = this.props.card.id === ''
+export default function Card(props){
+
+    const [name , setName] = React.useState(props.card.content)
+    const isDragDisabled = props.card.id === ''
+
+    const handleChangeFunc = async(e,id)=>{
+        console.log('value ', e.target.value, document.getElementById(props.card.id));
+        setName(e.target.value)
+        await  localStorage.setItem(id, e.target.value)
+
+    }
+
+    useEffect(()=>{
+     let temp =  localStorage.getItem(props.card.id)
+    setName(temp)
+    },[])
+
     return (
       <Draggable
-        draggableId={this.props.card.id}
-        index={this.props.index}
+        draggableId={props.card.id}
+        index={props.index}
         isDragDisabled={isDragDisabled}
       >
         {(provided, snapshot) => (
-
-          <Box bg='#DA0A5B' textColor='#FAFAFA' px={ 4 } m={ .5 } borderRadius='sm'
-          {...provided.draggableProps}
-          {...provided.dragHandleProps}
-          ref={provided.innerRef}
-          isDragging={snapshot.isDragging}
-          aria-roledescription="Press space bar to lift the card"
-        >
-          {this.props.card.content}
-          </Box>
+          
+          <div>
+            <input id={props.card.id} bg='#DA0A5B' textColor='#FAFAFA' px={ 4 } m={ .5 } borderRadius='sm'
+            value={name}
+            onChange={(e)=>handleChangeFunc(e,props.card.id)}
+          />
+            <div
+              {...provided.draggableProps}
+              {...provided.dragHandleProps}
+              ref={provided.innerRef}
+              isDragging={snapshot.isDragging}
+              aria-roledescription="Press space bar to lift the card"
+            
+            >drag</div>
+          </div>
         )}
       </Draggable>
     )
-  }
 }
