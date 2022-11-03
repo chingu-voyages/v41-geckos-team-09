@@ -12,7 +12,6 @@ export default function Card(props){
         console.log('value ', e.target.value, document.getElementById(props.card.id));
         setName(e.target.value)
         await  localStorage.setItem(id, e.target.value)
-
     }
 
     useEffect(()=>{
@@ -27,7 +26,7 @@ export default function Card(props){
         isDragDisabled={isDragDisabled}
       >
         {(provided, snapshot) => (
-          <Flex bg='grey' borderRadius={'sm'} m='.15em'>
+          <Flex borderRadius={'sm'} m='.15em'>
           <Box 
             {...provided.draggableProps}
             {...provided.dragHandleProps}
@@ -35,10 +34,10 @@ export default function Card(props){
             isDragging={snapshot.isDragging}
             aria-roledescription="Press space bar to lift the card"
           >
-            <DragHandleIcon bg='grey' p='.1em'/><Spacer />
+            <DragHandleIcon p='.1em'/><Spacer />
           </Box>
-          <Box textColor='dark'  m={ .5 } >
-            <Input focusBorderColor='#DA0A5B' size='sm' bg="AFAFAF" id={props.card.id} 
+          <Box m={ .5 } >
+            <Input  focusBorderColor='#DA0A5B' size='sm' bg="AFAFAF" id={props.card.id} 
             value={name}
             onChange={(e)=>handleChangeFunc(e,props.card.id)}
           />
