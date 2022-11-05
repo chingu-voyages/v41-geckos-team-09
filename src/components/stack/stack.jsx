@@ -3,6 +3,8 @@ import Card from '../card/card'
 import { Droppable, Draggable } from 'react-beautiful-dnd'
 import { chakra, Box, Heading } from '@chakra-ui/react'
 import stackHeading from '../theme'
+import localforage from 'localforage'
+import { useState } from 'react'
 
 const CardList = chakra(Box, {
     baseStyle: {
@@ -26,6 +28,9 @@ const CardList = chakra(Box, {
 //     }
 // }
 
+
+
+// should use useEffect()??
 function InnerList(props) {
     const shouldComponentUpdate = (nextProps) => {
         if(nextProps.cards === props.cards) {
@@ -39,6 +44,42 @@ function InnerList(props) {
 }
 
 export default function Stack(props){
+
+    console.log('props ===> ', props)
+
+    const [newAdd, setNewAdd] = useState(false)
+
+    const AddClickFunc = async(data) =>{
+        setNewAdd(true)
+        props.check(true)
+        //props.setLocalData(true)
+        let initialData = await localforage.getItem('initialData')
+
+        let length = Object.keys(initialData.cards).length;
+        
+        let obj = {
+            card :{
+                "id": `card-${length+1}`,
+                "content": "New Task"
+            }
+        }
+
+        obj[`card-${length+1}`] = obj['card']
+        delete obj['card']
+
+        initialData = {...initialData, cards : {...initialData.cards , ...obj } }
+
+        let cardId = `card-${length+1}`
+        initialData.stacks[data.stack.id].cardIds.push(cardId)
+
+
+        await localforage.setItem('initialData',initialData)
+
+     //   initialData = {...initialData, stacks : {...initialData.stacks , {...[data.stack.id] : {}}}}
+        setNewAdd(false)
+
+    }
+
     return (
         <Draggable draggableId={props.stack.id} index={props.index}>
             {(provided) => (
@@ -52,8 +93,10 @@ export default function Stack(props){
                 flexDirection={'column'}
                 {...provided.draggableProps} ref={provided.innerRef}>
                     <stackHeading 
+                    
                         {...provided.dragHandleProps}>
                         <Box p='6px'>{props.stack.title}</Box>
+                        <div onClick={()=>AddClickFunc(props)}>Add</div>
                     </stackHeading>
                     <Droppable droppableId={props.stack.id} type="card">
                     {(provided, snapshot) => (

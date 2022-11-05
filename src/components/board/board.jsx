@@ -6,22 +6,81 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import initialData from '../initial-data'
 import Stack from '../stack/stack'
 import { Box } from '@chakra-ui/react'
+import localforage from 'localforage'
+import { useEffect } from 'react'
+import { useState } from 'react'
 
 function InnerList(props) {
-    const {stack, cardMap, index } = props;
+    const {stack, cardMap, index , localData, check} = props;
     const cards = stack.cardIds.map(cardId => cardMap[cardId]);
-    return <Stack stack={stack} cards={cards} index={index} />;
+    return <Stack stack={stack} localData={localData} check={check} cards={cards} index={index} />;
   }
 
-export default class Board extends React.Component {
-  state = initialData
+export default function Board(props) {
+  
+  console.log('props ', props)
 
-  onDragStart = (start, provided) => {
+  const [state, setState] = React.useState(initialData)
+  const [localData, setLocalData] = useState({
+    refresh : false,
+    check: false,
+  })
+ // state= initialData
+
+  const check = (value) =>{
+    console.log('value is here ', value)
+    if(value) {
+      setLocalData({
+        ...localData, refresh : true
+      })
+    }
+  }
+
+ React.useEffect(()=>{
+   onLoad();
+ },[])
+
+
+ React.useEffect(()=>{
+  if(localData.refresh == true){
+    console.log('here ')
+    Onload2();
+    setLocalData({
+      ...localData, refresh : false
+    })
+  }
+ },[localData.refresh === true])
+
+const Onload2 = async()=>{
+  console.log('called ')
+  let data = await localforage.getItem('initialData');
+  setLocalData({...localData, refresh: true})
+  
+  setState({...data})
+  
+ }
+
+ console.log('local data ', localData)
+
+
+ const onLoad = async()=>{
+  let data = await localforage.getItem('initialData');
+  console.log('data');
+  if(data){
+    setState(data);
+  }
+  else{
+    await localforage.setItem('initialData', initialData)
+    setState(initialData)
+  }
+ }
+
+  const onDragStart = (start, provided) => {
     provided.announce(`You have lifted the card in position ${start.source.index + 1}`,
     );
   };
 
-  onDragUpdate = (update, provided) => {
+  const onDragUpdate = (update, provided) => {
     const message = update.destination 
       ? `You have moved the card to position ${update.destination.index + 1}`
       : `You are currently not over a droppable area`;
@@ -29,7 +88,7 @@ export default class Board extends React.Component {
       provided.announce(message);
   };
 
-  onDragEnd = (result, provided) => {
+  const onDragEnd = async(result, provided) => {
     const message = result.destination
         ? `You have moved the card from position
           ${result.source.index + 1} to ${result.destination.index + 1}`
@@ -52,20 +111,22 @@ export default class Board extends React.Component {
     }
 
     if (type === 'stack') {
-      const newStackOrder = Array.from(this.state.stackOrder);
+      const newStackOrder = Array.from(state.stackOrder);
       newStackOrder.splice(source.index, 1);
       newStackOrder.splice(destination.index, 0, draggableId);
 
       const newState = {
-        ...this.state,
-        stackOrder: newstackOrder,
+        ...state,
+        stackOrder: newStackOrder,
       };
-      this.setState(newState);
+      console.log('newState ', newState)
+      await localforage.setItem('initialData',newState)
+      setState(newState);
       return;
     }
 
-    const start = this.state.stacks[source.droppableId]
-    const finish = this.state.stacks[destination.droppableId]
+    const start = state.stacks[source.droppableId]
+    const finish = state.stacks[destination.droppableId]
 
     if (start === finish) {
       const newCardIds = Array.from(start.cardIds)
@@ -77,15 +138,19 @@ export default class Board extends React.Component {
         cardIds: newCardIds
       }
 
+      console.log('new Stack ', newStack)
+
+
       const newState = {
-        ...this.state,
+        ...state,
         stacks: {
-          ...this.state.stacks,
+          ...state.stacks,
           [newStack.id]: newStacks
         }
       }
 
-      this.setState(newState)
+     setState(newState)
+      await localforage.setItem('initialData',newState)
       return
     }
 
@@ -105,22 +170,29 @@ export default class Board extends React.Component {
     }
 
     const newState = {
-      ...this.state,
+      ...state,
       stacks: {
-        ...this.state.stacks,
+        ...state.stacks,
         [newStart.id]: newStart,
         [newFinish.id]: newFinish
-      }
     }
-    this.setState(newState)
+    
+  
   }
 
-  render() {
+    await localforage.setItem('initialData',newState)
+
+    console.log('new State here', newState)
+    setState(newState)
+
+  }
+  
     return (
+      <>
       <DragDropContext 
-        onDragStart={this.onDragStart}
-        onDragUpdate={this.onDragUpdate}
-        onDragEnd={this.onDragEnd}>
+        onDragStart={onDragStart}
+        onDragUpdate={onDragUpdate}
+        onDragEnd={onDragEnd}>
         <Droppable
           droppableId="all-stacks"
           direction="horizontal"
@@ -131,20 +203,23 @@ export default class Board extends React.Component {
                 {...provided.droppableProps}
                 ref={provided.innerRef}
                  display="flex" alignItems="center" justifyContent="center">
-                {this.state.stackOrder.map((stackId, index) => {
-                  const stack = this.state.stacks[stackId]
+                {state.stackOrder.map((stackId, index) => {
+                  const stack = state.stacks[stackId]
                    /* eslint-disable no-unused-vars */
                    const cards = stack.cardIds.map(
-                    cardId => this.state.cards[cardId]
+                    cardId => state.cards[cardId]
                   );
                   /* eslint-enable no-unused-vars */
                   return (
                     <>
-                    {console.log('stack Order ', this.state.stackOrder)}
+                    {console.log('stack Order ', state.stackOrder)}
                     <InnerList 
                       key={stack.id} 
+                      check={check}
+                      localData={localData}
+                      setLocalData={setLocalData}
                       stack={stack} 
-                      cardMap={this.state.cards} 
+                      cardMap={state.cards} 
                       index={index} 
                     />
                     </>
@@ -155,6 +230,7 @@ export default class Board extends React.Component {
             )}
         </Droppable>
       </DragDropContext>
+      </>
     )
-  }
 }
+
