@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './header.css';
 import logo from '../../images/logo-1.png';
 import { Box, Flex, Spacer, Link, Select } from '@chakra-ui/react'

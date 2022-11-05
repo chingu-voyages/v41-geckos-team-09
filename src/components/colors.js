@@ -1,6 +1,10 @@
 
 
 // RANGE OF COLOURS
+
+// this is just a handy place to keep the dark/light colours in case
+// i ever get around to making a custom chakra dark/light theme
+
 // https://gka.github.io/palettes/#/20|s|8f67a4|fef62b,38d6ff|1|1
 
 // blue "#17233b": '#010f26', '#0c1930', '#17233b', '#222d46', '#2c3751', '#37415c', '#424c67', '#4d5773', '#59637f', '#656e8b', '#707a98', '#7c86a4', '#8992b1', '#959fbe', '#a2abcb', '#aeb8d8', '#bbc5e5', '#c8d2f3', '#d6e0fe', '#e4eeff'
