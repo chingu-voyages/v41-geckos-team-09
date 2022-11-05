@@ -8,7 +8,8 @@ import { ChakraProvider } from '@chakra-ui/react'
 // import '@fontsource/oswald/700.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-        <ChakraProvider theme = {theme}>
+    // <ChakraProvider theme = {theme}>
+        <ChakraProvider resetCSS theme = {theme}>
             <ColorModeScript initialColorMode={theme.config.initialColorMode} />
             <App />
         </ChakraProvider>

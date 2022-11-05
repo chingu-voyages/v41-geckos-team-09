@@ -9,6 +9,7 @@ import { Box } from '@chakra-ui/react'
 import localforage from 'localforage'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import theme from '../theme'
 
 function InnerList(props) {
     const {stack, cardMap, index , localData, check} = props;

@@ -1,7 +1,6 @@
 import React from 'react';
 import './footer.css'
 import { Icon, Box, Text } from '@chakra-ui/react'
-import button from '../theme'
 
 // Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc.
 
@@ -9,9 +8,6 @@ const Footer = () => {
     return (
         <footer className="footerContainer">
             <Box>
-                <button>
-                    test
-                </button>
                 <Text>Travel2it is coded by <a className="footer-link" target="_blank" href='https://www.linkedin.com/in/sara-baqla/' title="Sara, a linkedin.com link">Sara
                     </a>, Ian, and <a className="footer-link" target="_blank" href='https://www.linkedin.com/in/isabel-klint/' title="Isabel, a linkedin.com link">Isabel
                     </a>: See our project on <a className="footer-link" target="_blank" href='https://github.com/chingu-voyages/v41-geckos-team-09' title="the Travel 2 It Github link">Github</a>

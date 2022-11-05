@@ -1,10 +1,11 @@
 import React from 'react'
 import Card from '../card/card'
 import { Droppable, Draggable } from 'react-beautiful-dnd'
-import { chakra, Box, Heading } from '@chakra-ui/react'
-import stackHeading from '../theme'
+import { chakra, Box, Button } from '@chakra-ui/react'
+// import stackHeading from '../theme'
 import localforage from 'localforage'
 import { useState } from 'react'
+// import { theme, button } from '../theme'
 
 const CardList = chakra(Box, {
     baseStyle: {
@@ -96,7 +97,14 @@ export default function Stack(props){
                     
                         {...provided.dragHandleProps}>
                         <Box p='6px'>{props.stack.title}</Box>
-                        <div onClick={()=>AddClickFunc(props)}>Add</div>
+                        <Button 
+                          variant="solid"
+                          size="xs"
+                          colorScheme="green"
+                          textAlign="center"
+                          border="none" 
+                          borderRadius="2px"
+                          onClick={()=>AddClickFunc(props)}>Add card</Button>
                     </stackHeading>
                     <Droppable droppableId={props.stack.id} type="card">
                     {(provided, snapshot) => (
