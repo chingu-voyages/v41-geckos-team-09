@@ -7,13 +7,11 @@ import initialData from '../initial-data'
 import Stack from '../stack/stack'
 import { Box } from '@chakra-ui/react'
 
-class InnerList extends React.PureComponent {
-  render() {
-    const {stack, cardMap, index } = this.props;
+function InnerList(props) {
+    const {stack, cardMap, index } = props;
     const cards = stack.cardIds.map(cardId => cardMap[cardId]);
     return <Stack stack={stack} cards={cards} index={index} />;
   }
-}
 
 export default class Board extends React.Component {
   state = initialData
