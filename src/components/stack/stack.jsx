@@ -32,21 +32,16 @@ export default class Stack extends React.Component {
             {(provided) => (
                 <Box minW={'220px'}
                 m={'8px'} 
+                p={'2px'}
                 border={'1px'} 
                 bg={'inherit'} 
                 borderRadius={'2px'}
                 display={'flex'}
                 flexDirection={'column'}
                 {...provided.draggableProps} ref={provided.innerRef}>
-                    {/* <Heading
-                    padding={'8px'}
-                    color={'inherit'}
-                    {...provided.dragHandleProps}>
-                        {this.props.stack.title}
-                    </Heading> */}
-                    <stackHeading
+                    <stackHeading 
                         {...provided.dragHandleProps}>
-                        {this.props.stack.title}
+                        <Box p='6px'>{this.props.stack.title}</Box>
                     </stackHeading>
                     <Droppable droppableId={this.props.stack.id} type="card">
                     {(provided, snapshot) => (

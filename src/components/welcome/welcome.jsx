@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, Heading, Text, Flex } from '@chakra-ui/react'
+import theme from '../theme'
 
 export default function Welcome() {
   return (
