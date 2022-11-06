@@ -2,29 +2,32 @@ import React, { useEffect } from 'react'
 import { Draggable } from 'react-beautiful-dnd'
 import { Box, Flex, Spacer, Input, Button } from '@chakra-ui/react'
 import { DragHandleIcon, DeleteIcon } from '@chakra-ui/icons'
+import localforage, { removeItem } from 'localforage'
+import { useState } from 'react'
 
 export default function Card(props){
 
     const [name , setName] = React.useState(props.card.content)
     const isDragDisabled = props.card.id === ''
 
-    // const DeleteClickFunc = async(data) =>{
-    //   setNewDelete(true)
-    //   props.check(true)
-    //   let initialData = await localforage.getItem('initialData')
-    //   localforage.removeItem(card.id).then(
-    //       await localforage.setItem('initialData',initialData)
-    //       setNewDelete(false)
-    //     console.log('Key is cleared!');
-    //   ).catch(function(err) {
-    //     console.log(err);
-    //   });
-    // }
-    
-    const DeleteClickFunc = async() =>{
-
+    const DeleteClickFunc = async(data) =>{
       console.log('you tried to delete')
-  }
+
+      // props.check(true)
+
+      let initialData = await localforage.getItem('initialData')
+
+      console.log(`list of cards `, initialData.cards)
+      
+      console.log(`delete this card `, props)
+
+      console.log(`do some remove action`)
+
+      
+      console.log(`after remove `, initialData.cards)
+
+      await localforage.setItem('initialData',initialData)
+    }
 
     const handleChangeFunc = async(e,id)=>{
         console.log('value ', e.target.value, document.getElementById(props.card.id));
