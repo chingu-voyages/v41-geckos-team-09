@@ -4,7 +4,7 @@ import './App.css';
 import Header from './components/header/header.jsx';
 import Board from './components/board/board.jsx';
 import Welcome from './components/welcome/welcome.jsx';
-import { Box } from '@chakra-ui/react';
+import { Box, } from '@chakra-ui/react';
 
 function App() {
 const [currentView, setCurrentView] = useState('Welcome');
@@ -26,7 +26,7 @@ const renderView = () => {
       <Box className="App">
         <Header currentView={currentView} handleViewChange={handleViewChange}/>
         {renderView()}
-        <Footer />
+        <Footer/>
       </Box>
     )
 }
