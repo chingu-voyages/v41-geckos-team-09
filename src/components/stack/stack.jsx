@@ -11,7 +11,7 @@ const CardList = chakra(Box, {
     baseStyle: {
       background: "#AAAAAA",
       border: ".01em solid",
-      h:"200px",
+      minHeight:"200px",
     },
   })
 
