@@ -69,8 +69,8 @@ export default function Stack(props){
                         flexDirection={'column'}
                         {...provided.dragHandleProps}>
                         <Box
-                            border={'1px'} 
-                            borderRadius={'2px'}
+                            bg='grey'
+                            color='white'
                             p='.4em'>
                                 {props.stack.title}</Box>
                     <Droppable droppableId={props.stack.id} type="card">
@@ -94,7 +94,7 @@ export default function Stack(props){
                             color="white"
                             textAlign="center"
                             border="none" 
-                            borderRadius="2px"
+                            borderRadius="none"
                             onClick={()=>AddClickFunc(props)}>Add card
                         </Button>
                     </Flex>

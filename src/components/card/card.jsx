@@ -44,7 +44,7 @@ export default function Card(props){
         isDragDisabled={isDragDisabled}
       >
         {(provided, snapshot) => (
-          <Flex borderRadius={'sm'} m='.15em'>
+          <Flex m='.15em'>
           <Box 
             {...provided.draggableProps}
             {...provided.dragHandleProps}
@@ -60,7 +60,7 @@ export default function Card(props){
             onChange={(e)=>handleChangeFunc(e,props.card.id)}
           />
           </Box>
-          <Button size='xs' onClick={()=>DeleteClickFunc(props)}><DeleteIcon pt='.1em'/></Button>
+          <Button size='xs' onClick={()=>DeleteClickFunc(props)}><DeleteIcon/></Button>
           </Flex>
         )}
       </Draggable>
