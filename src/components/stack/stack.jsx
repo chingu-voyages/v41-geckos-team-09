@@ -90,7 +90,8 @@ export default function Stack(props){
                             p='.2em'
                             variant="solid"
                             size="xs"
-                            colorScheme="green"
+                            bg="#DB095B"
+                            color="white"
                             textAlign="center"
                             border="none" 
                             borderRadius="2px"
