@@ -19,6 +19,32 @@ export default function Card(props){
 
       console.log(`do some remove action`)
 
+      // from stack
+      props.check(true)
+
+      let length = Object.keys(initialData.cards).length;
+      
+      let obj = {
+          card :{
+              "id": `card-${length+1}`,
+              "content": "New Task"
+          }
+      }
+
+      obj[`card-${length+1}`] = obj['card']
+      delete obj['card']
+
+      initialData = {...initialData, cards : {...initialData.cards , ...obj } }
+
+      let cardId = `card-${length+1}`
+      initialData.stacks[data.stack.id].cardIds.push(cardId)
+
+
+      await localforage.setItem('initialData',initialData)
+
+    //   initialData = {...initialData, stacks : {...initialData.stacks , {...[data.stack.id] : {}}}}
+    // from stack
+
       console.log(`after remove `, initialData.cards)
 
       await localforage.setItem('initialData',initialData)

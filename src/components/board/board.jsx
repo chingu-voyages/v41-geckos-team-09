@@ -178,7 +178,7 @@ export default function Board(props) {
               <Box
                 {...provided.droppableProps}
                 ref={provided.innerRef}
-                 display="flex" 
+                 display="flex"
                 //  alignItems="center" 
                  justifyContent="center">
                 {state.stackOrder.map((stackId, index) => {

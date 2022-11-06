@@ -4,17 +4,17 @@ import './App.css';
 import Header from './components/header/header.jsx';
 import Board from './components/board/board.jsx';
 import Welcome from './components/welcome/welcome.jsx';
-import { Box, } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
 function App() {
 const [currentView, setCurrentView] = useState('Welcome');
 
 const renderView = () => {
   if (currentView === 'Welcome') {
-    return <Welcome />;
+    return <Box h='82vh'><Welcome /></Box>;
   }
   if (currentView === 'Board') {
-    return <Board />;
+    return <Box h='85vh'><Board /></Box>;
   }
 };
 

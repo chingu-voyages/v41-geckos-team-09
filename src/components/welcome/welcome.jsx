@@ -1,10 +1,12 @@
 import React from 'react'
-import { Box, Heading, Text, Flex } from '@chakra-ui/react'
+import { Box, Heading, Text} from '@chakra-ui/react'
 import theme from '../theme'
 
 export default function Welcome() {
   return (
-    <Box  w={'80%'}
+
+    <Box 
+    w={'80%'}
     m={'20px'} 
     p={'20px'}
     bg={'inherit'} 
