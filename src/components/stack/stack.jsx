@@ -61,8 +61,7 @@ export default function Stack(props){
         <Draggable draggableId={props.stack.id} index={props.index}>
             {(provided) => (
                 <Box minW={'220px'}
-                p='.4em'
-                mt='2em'
+                pr='.4em'
                 display={'flex'}
                 flexDirection={'column'}
                 {...provided.draggableProps} ref={provided.innerRef}>
@@ -96,7 +95,8 @@ export default function Stack(props){
                             textAlign="center"
                             border="none" 
                             borderRadius="2px"
-                            onClick={()=>AddClickFunc(props)}>Add card</Button>
+                            onClick={()=>AddClickFunc(props)}>Add card
+                        </Button>
                     </Flex>
                 </Box>
             )}

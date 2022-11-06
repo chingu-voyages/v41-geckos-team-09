@@ -5,7 +5,7 @@ import '@atlaskit/css-reset'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import initialData from '../initial-data'
 import Stack from '../stack/stack'
-import { Box } from '@chakra-ui/react'
+import { Box, Button } from '@chakra-ui/react'
 import localforage from 'localforage'
 import { useEffect } from 'react'
 import { useState } from 'react'
@@ -165,6 +165,20 @@ export default function Board(props) {
   
     return (
       <>
+        <Button 
+            p='.2em'
+            mt='2em'
+            ml='5em'
+            variant="solid"
+            size="xs"
+            bg="#DB095B"
+            color="white"
+            textAlign="center"
+            border="none" 
+            borderRadius="2px"
+          >
+            New stack
+        </Button>
         <DragDropContext 
         onDragStart={onDragStart}
         onDragUpdate={onDragUpdate}
