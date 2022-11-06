@@ -178,7 +178,9 @@ export default function Board(props) {
               <Box
                 {...provided.droppableProps}
                 ref={provided.innerRef}
-                 display="flex" alignItems="center" justifyContent="center">
+                 display="flex" 
+                //  alignItems="center" 
+                 justifyContent="center">
                 {state.stackOrder.map((stackId, index) => {
                   const stack = state.stacks[stackId]
                    /* eslint-disable no-unused-vars */
