@@ -11,7 +11,7 @@ const Footer = () => {
             mb='auto'
 			backgroundColor="#1779EA;">
                 <Box p='1em'>
-                    <Text>Travel2it is coded by <a className="footer-link" target="_blank" href='https://www.linkedin.com/in/sara-baqla/' title="Sara, a linkedin.com link">Sara
+                    <Text color='white'>Travel2it is coded by <a className="footer-link" target="_blank" href='https://www.linkedin.com/in/sara-baqla/' title="Sara, a linkedin.com link">Sara
                         </a>, Ian, and <a className="footer-link" target="_blank" href='https://www.linkedin.com/in/isabel-klint/' title="Isabel, a linkedin.com link">Isabel
                         </a>: See our project on <a className="footer-link" target="_blank" href='https://github.com/chingu-voyages/v41-geckos-team-09' title="the Travel 2 It Github link">Github</a>
                         <em> </em>
