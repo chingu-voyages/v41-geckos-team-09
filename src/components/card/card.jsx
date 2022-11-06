@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Draggable } from 'react-beautiful-dnd'
-import { Box, Flex, Spacer, Input, Button } from '@chakra-ui/react'
+import { Box, Flex, Spacer, Textarea, Button } from '@chakra-ui/react'
 import { DragHandleIcon, DeleteIcon } from '@chakra-ui/icons'
 import localforage, { removeItem } from 'localforage'
 import { useState } from 'react'
@@ -13,17 +13,12 @@ export default function Card(props){
     const DeleteClickFunc = async(data) =>{
       console.log('you tried to delete')
 
-      // props.check(true)
-
       let initialData = await localforage.getItem('initialData')
 
       console.log(`list of cards `, initialData.cards)
-      
-      console.log(`delete this card `, props)
 
       console.log(`do some remove action`)
 
-      
       console.log(`after remove `, initialData.cards)
 
       await localforage.setItem('initialData',initialData)
@@ -58,12 +53,12 @@ export default function Card(props){
             <DragHandleIcon p='.1em'/><Spacer />
           </Box>
           <Box m={ .5 } >
-            <Input  focusBorderColor='#DA0A5B' size='sm' bg="AFAFAF" id={props.card.id} 
+            <Textarea  focusBorderColor='#DA0A5B' size='sm' bg="AFAFAF" id={props.card.id} 
             value={name}
             onChange={(e)=>handleChangeFunc(e,props.card.id)}
           />
           </Box>
-          <Button onClick={()=>DeleteClickFunc(props)}><DeleteIcon pt='.1em'/></Button>
+          <Button size='xs' onClick={()=>DeleteClickFunc(props)}><DeleteIcon pt='.1em'/></Button>
           </Flex>
         )}
       </Draggable>
