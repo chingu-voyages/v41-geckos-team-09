@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Draggable } from 'react-beautiful-dnd'
 import { Box, Flex, Spacer, Input } from '@chakra-ui/react'
-import { DragHandleIcon } from '@chakra-ui/icons'
+import { DragHandleIcon, DeleteIcon } from '@chakra-ui/icons'
 
 export default function Card(props){
 
@@ -42,6 +42,7 @@ export default function Card(props){
             onChange={(e)=>handleChangeFunc(e,props.card.id)}
           />
           </Box>
+          <Box><DeleteIcon pt='.1em'/></Box>
           </Flex>
         )}
       </Draggable>

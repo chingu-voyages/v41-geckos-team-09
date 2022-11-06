@@ -13,25 +13,9 @@ const CardList = chakra(Box, {
       border: ".01em solid",
       h:"200px",
     },
-  })
-
-// class InnerList extends React.Component {
-//     shouldComponentUpdate(nextProps) {
-//         if(nextProps.cards === props.cards) {
-//             return false;
-//         }
-//         return true;
-//     }
-//     render() {
-//         return props.cards.map((card,index) => (
-//             <Card key={card.id} card={card} index={index} />
-//         ));
-//     }
-// }
+})
 
 
-
-// should use useEffect()??
 function InnerList(props) {
     const shouldComponentUpdate = (nextProps) => {
         if(nextProps.cards === props.cards) {
