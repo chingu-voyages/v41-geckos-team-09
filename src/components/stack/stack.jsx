@@ -62,6 +62,7 @@ export default function Stack(props){
             {(provided) => (
                 <Box minW={'220px'}
                 p='.4em'
+                mt='2em'
                 display={'flex'}
                 flexDirection={'column'}
                 {...provided.draggableProps} ref={provided.innerRef}>
