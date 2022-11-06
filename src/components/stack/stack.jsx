@@ -61,18 +61,18 @@ export default function Stack(props){
         <Draggable draggableId={props.stack.id} index={props.index}>
             {(provided) => (
                 <Box minW={'220px'}
-                m={'8px'} 
-                p={'2px'}
-                border={'1px'} 
-                bg={'inherit'} 
-                borderRadius={'2px'}
+                p='.4em'
                 display={'flex'}
                 flexDirection={'column'}
                 {...provided.draggableProps} ref={provided.innerRef}>
                     <Flex
                         flexDirection={'column'}
                         {...provided.dragHandleProps}>
-                        <Box p='.4em'>{props.stack.title}</Box>
+                        <Box
+                            border={'1px'} 
+                            borderRadius={'2px'}
+                            p='.4em'>
+                                {props.stack.title}</Box>
                     <Droppable droppableId={props.stack.id} type="card">
                     {(provided, snapshot) => (
                         <CardList
