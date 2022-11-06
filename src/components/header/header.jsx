@@ -21,7 +21,8 @@ const whatsAppURL = 'https://www.whatsapp.com/';
 // const emailURL = ''
 
   return (
-    <Flex >
+    <Flex shadow='md
+    '>
       <Box><Link id='logoLink' href='#Welcome' onClick={() => handleViewChange('Welcome')}><img className='header-logo' src={logo} alt='travel logo' /></Link></Box>
       <Spacer />
       <Box mt={'17px'} p={'1em'}><Link _hover={{ fontSize:'xl', color: '#aa5d89' }}  href='#Welcome' onClick={() => handleViewChange('Welcome')}>Welcome View</Link></Box>
