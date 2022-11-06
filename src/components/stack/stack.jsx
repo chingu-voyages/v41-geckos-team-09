@@ -70,20 +70,9 @@ export default function Stack(props){
                 flexDirection={'column'}
                 {...provided.draggableProps} ref={provided.innerRef}>
                     <Flex
-                        align={'center'}
+                        flexDirection={'column'}
                         {...provided.dragHandleProps}>
-                        <Box p='1em'>{props.stack.title}</Box>
-                        <Spacer />
-                        <Button 
-                            m='1em'
-                            variant="solid"
-                            size="xs"
-                            colorScheme="green"
-                            textAlign="center"
-                            border="none" 
-                            borderRadius="2px"
-                            onClick={()=>AddClickFunc(props)}>Add card</Button>
-                    </Flex>
+                        <Box p='.4em'>{props.stack.title}</Box>
                     <Droppable droppableId={props.stack.id} type="card">
                     {(provided, snapshot) => (
                         <CardList
@@ -96,6 +85,17 @@ export default function Stack(props){
                         </CardList>
                     )}
                     </Droppable>
+                    <Spacer />
+                        <Button 
+                            p='.2em'
+                            variant="solid"
+                            size="xs"
+                            colorScheme="green"
+                            textAlign="center"
+                            border="none" 
+                            borderRadius="2px"
+                            onClick={()=>AddClickFunc(props)}>Add card</Button>
+                    </Flex>
                 </Box>
             )}
         </Draggable>
