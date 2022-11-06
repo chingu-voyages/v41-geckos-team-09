@@ -1,7 +1,6 @@
 /* https://egghead.io/courses/beautiful-and-accessible-drag-and-drop-with-react-beautiful-dnd */
 
 import React from 'react'
-import '@atlaskit/css-reset'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import initialData from '../initial-data'
 import Stack from '../stack/stack'
@@ -9,7 +8,8 @@ import { Box, Button } from '@chakra-ui/react'
 import localforage from 'localforage'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import theme from '../theme'
+
+// import theme from '../theme'
 
 function InnerList(props) {
   console.log('props ', props.stack);
@@ -19,7 +19,39 @@ function InnerList(props) {
   }
 
 export default function Board(props) {
+
+  const AddClickFunc = async(data) =>{
+    // why is props check not a function?
+    props.check(true)
+    //props.setLocalData(true)
+    let initialData = await localforage.getItem('initialData')
   
+    let length = Object.keys(initialData.stacks).length;
+    console.log(length)
+    
+    let obj = {
+        stack :{
+            "id": `stack-${length+1}`,
+            "title": "New Stack",
+            "cardIds": []
+          }
+        }
+  
+    obj[`stack-${length+1}`] = obj['stack']
+    delete obj['stack']
+  
+    initialData = {...initialData, stacks : {...initialData.stacks , ...obj } }
+  
+    let stackId = `stack-${length+1}`
+    initialData.push(stackID)
+    // stacks[data.stack.id].cardIds.push(cardId)
+  
+  
+    await localforage.setItem('initialData',initialData)
+  
+  //   initialData = {...initialData, stacks : {...initialData.stacks , {...[data.stack.id] : {}}}}
+  }
+
   const [state, setState] = React.useState(initialData)
 
   const check = (value) =>{
@@ -40,7 +72,6 @@ export default function Board(props) {
  React.useEffect(()=>{
    onLoad();
  },[])
-
 
  const onLoad = async()=>{
   let data = await localforage.getItem('initialData');
@@ -176,6 +207,7 @@ export default function Board(props) {
             textAlign="center"
             border="none" 
             borderRadius="2px"
+            onClick={()=>AddClickFunc(props)}
           >
             New stack
         </Button>

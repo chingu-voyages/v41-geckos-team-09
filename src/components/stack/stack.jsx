@@ -4,6 +4,7 @@ import { Droppable, Draggable } from 'react-beautiful-dnd'
 import { chakra, Box, Button, Spacer, Flex } from '@chakra-ui/react'
 import localforage from 'localforage'
 import { useState } from 'react'
+import { useEffect } from 'react'
 // import { theme, button } from '../theme'
 
 const CardList = chakra(Box, {
@@ -31,7 +32,7 @@ export default function Stack(props){
 
     const AddClickFunc = async(data) =>{
         props.check(true)
-        //props.setLocalData(true)
+        // props.setLocalData(true)
         let initialData = await localforage.getItem('initialData')
 
         let length = Object.keys(initialData.cards).length;
