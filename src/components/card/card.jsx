@@ -60,7 +60,7 @@ export default function Card(props){
             onChange={(e)=>handleChangeFunc(e,props.card.id)}
           />
           </Box>
-          <Button size='xs' onClick={()=>DeleteClickFunc(props)}><DeleteIcon/></Button>
+          <Button size='xs' bg='#E7CD06' color='#291400' onClick={()=>DeleteClickFunc(props)}><DeleteIcon/></Button>
           </Flex>
         )}
       </Draggable>
