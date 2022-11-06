@@ -39,7 +39,7 @@ const whatsAppURL = 'https://www.whatsapp.com/';
         </EmailShareButton>
       </Box>
       <Spacer />
-      <Box className='shareIcon' mt={'17px'}>
+      <Box className='shareIcon' m={'17px'}>
         <FacebookShareButton url={facebookURL}><FacebookIcon size={45} borderRadius={15} /></FacebookShareButton>
       </Box>
       <Spacer />
