@@ -1,8 +1,7 @@
 import React from 'react'
 import Card from '../card/card'
 import { Droppable, Draggable } from 'react-beautiful-dnd'
-import { chakra, Box, Button } from '@chakra-ui/react'
-// import stackHeading from '../theme'
+import { chakra, Box, Button, Spacer, Flex } from '@chakra-ui/react'
 import localforage from 'localforage'
 import { useState } from 'react'
 // import { theme, button } from '../theme'
@@ -70,19 +69,21 @@ export default function Stack(props){
                 display={'flex'}
                 flexDirection={'column'}
                 {...provided.draggableProps} ref={provided.innerRef}>
-                    <stackHeading 
-                    
+                    <Flex
+                        align={'center'}
                         {...provided.dragHandleProps}>
-                        <Box p='6px'>{props.stack.title}</Box>
+                        <Box p='1em'>{props.stack.title}</Box>
+                        <Spacer />
                         <Button 
-                          variant="solid"
-                          size="xs"
-                          colorScheme="green"
-                          textAlign="center"
-                          border="none" 
-                          borderRadius="2px"
-                          onClick={()=>AddClickFunc(props)}>Add card</Button>
-                    </stackHeading>
+                            m='1em'
+                            variant="solid"
+                            size="xs"
+                            colorScheme="green"
+                            textAlign="center"
+                            border="none" 
+                            borderRadius="2px"
+                            onClick={()=>AddClickFunc(props)}>Add card</Button>
+                    </Flex>
                     <Droppable droppableId={props.stack.id} type="card">
                     {(provided, snapshot) => (
                         <CardList
