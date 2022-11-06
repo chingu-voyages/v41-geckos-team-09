@@ -3,6 +3,25 @@ import { Draggable } from 'react-beautiful-dnd'
 import { Box, Flex, Spacer, Input } from '@chakra-ui/react'
 import { DragHandleIcon, DeleteIcon } from '@chakra-ui/icons'
 
+
+const DeleteClickFunc = async(data) =>{
+  setNewDelete(true)
+  props.check(true)
+
+  let initialData = await localforage.getItem('initialData')
+
+  initialData = {...initialData, cards : {...initialData.cards } }
+
+  
+  initialData.stacks[data.stack.id].cardIds.push(cardId)
+
+
+  await localforage.setItem('initialData',initialData)
+
+  setNewDelete(false)
+
+}
+
 export default function Card(props){
 
     const [name , setName] = React.useState(props.card.content)
@@ -42,7 +61,7 @@ export default function Card(props){
             onChange={(e)=>handleChangeFunc(e,props.card.id)}
           />
           </Box>
-          <Box><DeleteIcon pt='.1em'/></Box>
+          <Box onClick={()=>DeleteClickFunc(props)}><DeleteIcon pt='.1em'/></Box>
           </Flex>
         )}
       </Draggable>
