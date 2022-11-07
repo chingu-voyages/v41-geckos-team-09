@@ -256,7 +256,7 @@ export default function Board(props) {
           </Droppable>
         </DragDropContext>
         </Flex>
-        <Flex>
+        <Flex bg='grey' w='100%' p='4em'>
           <Box>
             <Box>
               <Heading>LIST COMPONENTS</Heading>
