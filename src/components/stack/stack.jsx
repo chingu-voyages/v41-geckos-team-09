@@ -80,7 +80,7 @@ export default function Stack(props){
                         {...provided.dragHandleProps}>
                         <Input
                            focusBorderColor='#DA0A5B' 
-                           border='2px solid'
+                           borderSize='2px solid'
                            borderColor='grey'
                            borderRadius='none'
 
