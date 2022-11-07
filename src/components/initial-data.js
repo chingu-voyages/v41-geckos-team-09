@@ -1,24 +1,24 @@
 const initialData = {
     cards: {
-      'card-1': { id: 'card-1', content: 'Flight info: UA 787 lv 9AM' },
-      'card-2': { id: 'card-2', content: 'get uber to Catipoato' },
-      'card-3': { id: 'card-3', content: 'double check museum times' },
-      'card-4': { id: 'card-4', content: 'dinner with Geno' }
+      'card-1': { id: 'card-1', content: 'Take out the garbage' },
+      'card-2': { id: 'card-2', content: 'Watch my favorite show' },
+      'card-3': { id: 'card-3', content: 'Charge my phone' },
+      'card-4': { id: 'card-4', content: 'Cook dinner' }
     },
     stacks: {
       'stack-1': {
         id: 'stack-1',
-        title: 'Travel day',
+        title: 'To do',
         cardIds: ['card-1', 'card-2', 'card-3', 'card-4']
       },
       'stack-2': {
         id: 'stack-2',
-        title: 'Museum: Blue House',
+        title: 'In progress',
         cardIds: []
       },
       'stack-3': {
         id: 'stack-3',
-        title: 'Zoo?',
+        title: 'Done',
         cardIds: []
       }
     },
