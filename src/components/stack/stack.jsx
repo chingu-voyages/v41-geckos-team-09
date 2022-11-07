@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Card from '../card/card'
 import { Droppable, Draggable } from 'react-beautiful-dnd'
-import { chakra, Box, Button, Spacer, Flex, Input } from '@chakra-ui/react'
+import { chakra, Box, Button, Spacer, Flex } from '@chakra-ui/react'
 import localforage from 'localforage'
+import { useState } from 'react'
+import { useEffect } from 'react'
 // import { theme, button } from '../theme'
 
 const CardList = chakra(Box, {
@@ -26,18 +28,7 @@ function InnerList(props) {
 }
 
 export default function Stack(props){
-    const [name , setName] = React.useState(props.stack.title)
 
-    const handleChangeFunc = async(e,id)=>{
-        console.log('value ', e.target.value, document.getElementById(props.stack.id));
-        setName(e.target.value)
-        await  localStorage.setItem(id, e.target.value)
-    }
-
-    useEffect(()=>{
-     let temp =  localStorage.getItem(props.stack.id)
-    setName(temp)
-    },[])
 
     const AddClickFunc = async(data) =>{
         props.check(true)
@@ -78,18 +69,11 @@ export default function Stack(props){
                     <Flex
                         flexDirection={'column'}
                         {...provided.dragHandleProps}>
-                        <Input
-                           focusBorderColor='#DA0A5B' 
-                           size='sm' 
-                           bg="grey" 
-                           color="white"
-                           borderRadius='none'
-                           border='none'
-                           placeholder='Add a title'
-                           id={props.stack.id} 
-                           value={name}
-                           onChange={(e)=>handleChangeFunc(e,props.stack.id)}
-                        />
+                        <Box
+                            bg='grey'
+                            color='white'
+                            p='.4em'>
+                                {props.stack.title}</Box>
                     <Droppable droppableId={props.stack.id} type="card">
                     {(provided, snapshot) => (
                         <CardList
