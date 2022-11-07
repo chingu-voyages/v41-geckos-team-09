@@ -85,7 +85,6 @@ export default function Stack(props){
                            color="white"
                            borderRadius='none'
                            border='none'
-                           fontSize='large'
                            placeholder='Add a title'
                            id={props.stack.id} 
                            value={name}
