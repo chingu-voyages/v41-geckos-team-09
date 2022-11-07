@@ -4,7 +4,7 @@ import React from 'react'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import initialData from '../initial-data'
 import Stack from '../stack/stack'
-import { Box, Button } from '@chakra-ui/react'
+import { Box, Button, Flex, Spacer } from '@chakra-ui/react'
 import localforage from 'localforage'
 import { useEffect } from 'react'
 import { useState } from 'react'
@@ -195,18 +195,20 @@ export default function Board(props) {
   }
   
     return (
-      <>
+      <><Flex
+        m='1em'
+        justifyContent="center"
+      >
         <Button 
             p='.2em'
-            mt='2em'
-            ml='5em'
+            mr='.5em'
             variant="solid"
             size="xs"
             bg="#DB095B"
             color="white"
             textAlign="center"
             border="none" 
-            borderRadius="2px"
+            borderRadius="none"
             onClick={()=>AddClickFunc(props)}
           >
             New stack
@@ -251,6 +253,7 @@ export default function Board(props) {
             )}
         </Droppable>
       </DragDropContext>
+      </Flex>
       </>
     )
 }
