@@ -5,25 +5,41 @@ import { DragHandleIcon, DeleteIcon } from '@chakra-ui/icons'
 import localforage, { removeItem } from 'localforage'
 import { useState } from 'react'
 
+
 export default function Card(props){
 
     const [name , setName] = React.useState(props.card.content)
     const isDragDisabled = props.card.id === ''
 
-    const DeleteClickFunc = async(data) =>{
-      console.log('you tried to delete')
+    const DeleteClickFunc = async(card) =>{
+      console.log('you tried to delete ', card)
 
       let initialData = await localforage.getItem('initialData')
 
-      console.log(`list of cards `, initialData.cards)
+      console.log('initial data ', initialData)
+      delete initialData.cards[card]
+     // console.log('intitla data ', initialData.cards)
 
-      console.log(`do some remove action`)
+      let stackOrder = {}
+      initialData.stackOrder.forEach((stack, idx)=>{
+        //console.log('stack ', stack)
+        let cardIds = []
+        cardIds = initialData.stacks[stack].cardIds.filter((cardId)=>{
+          return cardId != card
+        })
 
-      await localforage.setItem('initialData',initialData)
+        console.log('cardIds ', cardIds)
 
-      console.log(`after remove `, initialData.cards)
+        initialData.stacks[stack].cardIds = cardIds
+        
+        //console.log(initialData.stacks[stack])
+      })
+      console.log('initial Data ', initialData)
 
-      await localforage.setItem('initialData',initialData)
+      await localforage.setItem('initialData', initialData)
+
+      props.check(true)
+
     }
 
     const handleChangeFunc = async(e,id)=>{
@@ -34,7 +50,7 @@ export default function Card(props){
 
     useEffect(()=>{
      let temp =  localStorage.getItem(props.card.id)
-    setName(temp)
+     setName(temp)
     },[])
 
     return (
@@ -60,7 +76,7 @@ export default function Card(props){
             onChange={(e)=>handleChangeFunc(e,props.card.id)}
           /><Spacer />
           </Box>
-          <Button borderRadius='none' mt='3px' size='xs' bg='#E7CD06' color='#291400' onClick={()=>DeleteClickFunc(props)}><DeleteIcon/></Button>
+          <Button borderRadius='none' mt='3px' size='xs' bg='#E7CD06' color='#291400' onClick={()=>DeleteClickFunc(props.card.id)}><DeleteIcon/></Button>
           </Flex>
         )}
       </Draggable>

@@ -6,6 +6,8 @@ import localforage from 'localforage'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { DragHandleIcon, DeleteIcon } from '@chakra-ui/icons'
+import { generatePath } from 'react-router-dom'
+import initialData from '../initial-data'
 // import { theme, button } from '../theme'
 
 const CardList = chakra(Box, {
@@ -24,24 +26,13 @@ function InnerList(props) {
         return true;
     }
     return props.cards.map((card,index) => (
-            <Card key={card.id} card={card} index={index} />
+            <Card check={props.check} key={card.id} card={card} index={index} />
     ));
 }
 
 export default function Stack(props){
 
-    const [name , setName] = React.useState(props.stack.title)
-
-    const handleChangeFunc = async(e,id)=>{
-        console.log('value ', e.target.value, document.getElementById(props.stack.id));
-        setName(e.target.value)
-        await  localStorage.setItem(id, e.target.value)
-    }
-
-    useEffect(()=>{
-     let temp =  localStorage.getItem(props.stack.id)
-    setName(temp)
-    },[])
+    const [name , setName] = React.useState()
 
     const AddClickFunc = async(data) =>{
         props.check(true)
@@ -57,6 +48,8 @@ export default function Stack(props){
             }
         }
 
+        await localforage.setItem('totalStacks',length+1);
+
         obj[`card-${length+1}`] = obj['card']
         delete obj['card']
 
@@ -70,6 +63,44 @@ export default function Stack(props){
 
      //   initialData = {...initialData, stacks : {...initialData.stacks , {...[data.stack.id] : {}}}}
     }
+
+    const handleDeleteFunc = async(data)=>{
+        let initialData = await localforage.getItem('initialData')
+
+        setTimeout(async()=>{
+            let stackOrder =initialData.stackOrder.filter((stack)=>{
+                return stack != data.stack.id
+             })
+     
+             initialData.stackOrder = stackOrder
+             delete initialData.stacks[data.stack.id]
+             console.log('initialData after delete ', initialData)
+             await localforage.setItem('initialData',initialData)
+             props.check(true)
+        },500)
+    }
+
+    const handleStackNameChange = async(e,data)=>{
+        setName(e.target.value)
+        let initialData = await localforage.getItem('initialData');
+        console.log('initial Data ',initialData, data)
+        initialData.stacks[data.id].title = e.target.value
+        await localforage.setItem('initialData',initialData)
+        props.check(true)
+    }
+
+    useEffect(()=>{
+       getName();
+    },[])
+
+    const getName = async() =>{
+       let data = await localforage.getItem('initialData');
+       console.log('props, ', props, data)
+       setName(data.stacks[props.stack.id].title)
+    }
+
+
+    console.log('name ',name)
 
     return (
         <Draggable draggableId={props.stack.id} index={props.index}>
@@ -87,6 +118,7 @@ export default function Stack(props){
                             p='.3em'
                         >
                             <DragHandleIcon p='.1em'/>
+                            {console.log('props ', props)}
                             <Input
                                 size={'sm'}
                                 borderRadius='none'
@@ -95,9 +127,10 @@ export default function Stack(props){
                                 focusBorderColor='#DA0A5B'
                                 bg='darkgrey'
                                 fontSize='lg'
-                                color='white'>
-                                {props.stack.name}
-                            </Input>
+                                value={name}
+                                onChange={(e)=>handleStackNameChange(e,props.stack)}
+                                color='white'/>
+                          
                         </Flex>
                         <Droppable droppableId={props.stack.id} type="card">
                         {(provided, snapshot) => (
@@ -106,7 +139,7 @@ export default function Stack(props){
                             {...provided.droppableProps}
                             isDraggingOver={snapshot.isDraggingOver}
                             >
-                                <InnerList cards={props.cards} />
+                                <InnerList check={props.check} cards={props.cards} />
                             {provided.placeholder}
                             </CardList>
                         )}
@@ -123,7 +156,7 @@ export default function Stack(props){
                             onClick={()=>AddClickFunc(props)}>Add card
                         </Button>
                     </Flex>
-                    <Button mt='3px' borderRadius='none' size='xs' bg='#E7CD06' color='#291400'><DeleteIcon/>- Delete this stack</Button>
+                    <Button onClick={()=>handleDeleteFunc(props)}  mt='3px' borderRadius='none' size='xs' bg='#E7CD06' color='#291400'><DeleteIcon/>- Delete this stack</Button>
                 </Box>
             )}
         </Draggable>

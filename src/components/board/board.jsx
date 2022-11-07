@@ -12,7 +12,6 @@ import { useState } from 'react'
 // import theme from '../theme'
 
 function InnerList(props) {
-  console.log('props ', props.stack);
     const {stack, cardMap, index , check} = props;
     const cards = stack.cardIds.map(cardId => cardMap[cardId]);
     return <Stack stack={stack} check={check} cards={cards} index={index} />;
@@ -20,46 +19,13 @@ function InnerList(props) {
 
 export default function Board(props) {
 
-  const AddClickFunc = async(data) =>{
-    // why is props check not a function?
-    props.check(true)
-    //props.setLocalData(true)
-    let initialData = await localforage.getItem('initialData')
-  
-    let length = Object.keys(initialData.stacks).length;
-    console.log(length)
-    
-    let obj = {
-        stack :{
-            "id": `stack-${length+1}`,
-            "title": "New Stack",
-            "cardIds": []
-          }
-        }
-  
-    obj[`stack-${length+1}`] = obj['stack']
-    delete obj['stack']
-  
-    initialData = {...initialData, stacks : {...initialData.stacks , ...obj } }
-  
-    let stackId = `stack-${length+1}`
-    initialData.push(stackID)
-    // stacks[data.stack.id].cardIds.push(cardId)
-  
-  
-    await localforage.setItem('initialData',initialData)
-  
-  //   initialData = {...initialData, stacks : {...initialData.stacks , {...[data.stack.id] : {}}}}
-  }
-
   const [state, setState] = React.useState(initialData)
+  const [disable, setDisable]= React.useState(false)
 
   const check = (value) =>{
     if(value) {
         setTimeout(async()=>{
-          console.log('here ');
           let data = await localforage.getItem('initialData');
-          console.log('data ', data.stacks);
           let stackOrder, cards, stacks;
           stackOrder = data.stackOrder;
           cards = data.cards;
@@ -193,6 +159,42 @@ export default function Board(props) {
     setState(newState)
 
   }
+
+  const AddNewStackFunc = async()=>{
+    setDisable(true)
+    setTimeout(async()=>{    
+    let initialData = await localforage.getItem('initialData');
+    console.log('initial Data ', initialData)
+
+    let createdStacks = await localforage.getItem('totalStacks')
+    console.log('ceated Stacks ', createdStacks);
+
+    if(!createdStacks) {
+      await localforage.setItem('totalStacks',4)
+      createdStacks = 3}
+    
+    console.log('created stacks after', createdStacks)
+
+      initialData.stackOrder.push(`stack-${createdStacks+1}`)
+  
+      let obj = {
+        stack :{
+          id : 'stack-'+(createdStacks+1),
+          title:'New Stack',
+          cardIds: []
+        }
+    }
+  
+      obj[`stack-${createdStacks+1}`] = obj['stack']
+      delete obj['stack']
+  
+      initialData.stacks = {...initialData.stacks , ...obj }
+  
+      await localforage.setItem('initialData',initialData);
+      check(true)
+      setDisable(false)
+    },700)
+  }
   
     return (
       <>
@@ -211,7 +213,8 @@ export default function Board(props) {
               textAlign="center"
               border="none" 
               borderRadius="none"
-              onClick={()=>AddClickFunc(props)}
+              disabled={disable}
+              onClick={()=>AddNewStackFunc(props)}
               >
               New stack
           </Button>
