@@ -4,7 +4,7 @@ import React from 'react'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import initialData from '../initial-data'
 import Stack from '../stack/stack'
-import { Box, Button, Flex, Spacer } from '@chakra-ui/react'
+import { Box, Button, Flex, Spacer, VStack, Heading } from '@chakra-ui/react'
 import localforage from 'localforage'
 import { useEffect } from 'react'
 import { useState } from 'react'
@@ -195,65 +195,82 @@ export default function Board(props) {
   }
   
     return (
-      <><Flex
-        m='1em'
-        justifyContent="center"
-      >
-        <Button 
-            p='.2em'
-            mr='.5em'
-            variant="solid"
-            size="xs"
-            bg="#DB095B"
-            color="white"
-            textAlign="center"
-            border="none" 
-            borderRadius="none"
-            onClick={()=>AddClickFunc(props)}
-          >
-            New stack
-        </Button>
-        <DragDropContext 
-        onDragStart={onDragStart}
-        onDragUpdate={onDragUpdate}
-        onDragEnd={onDragEnd}>
-        <Droppable
-          droppableId="all-stacks"
-          direction="horizontal"
-          type="stack"
-          >
-            {provided => (
-              <Box
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-                 display="flex"
-                //  alignItems="center" 
-                 justifyContent="center">
-                {state.stackOrder.map((stackId, index) => {
-                  const stack = state.stacks[stackId]
-                   /* eslint-disable no-unused-vars */
-                   const cards = stack.cardIds.map(
-                    cardId => state.cards[cardId]
-                  );
-                  /* eslint-enable no-unused-vars */
-                  return (
-                    <>
-                    <InnerList 
-                      key={stack.id} 
-                      check={check}
-                      stack={stack} 
-                      cardMap={state.cards} 
-                      index={index} 
-                    />
-                    </>
-                  );
-                })}
-                {provided.placeholder}
-              </Box>
-            )}
-        </Droppable>
-      </DragDropContext>
-      </Flex>
+      <>
+      <VStack>
+        <Flex
+          m='1em'
+          justifyContent="center"
+        >
+          <Button 
+              p='.2em'
+              mr='.5em'
+              variant="solid"
+              size="xs"
+              bg="#DB095B"
+              color="white"
+              textAlign="center"
+              border="none" 
+              borderRadius="none"
+              onClick={()=>AddClickFunc(props)}
+              >
+              New stack
+          </Button>
+          <DragDropContext 
+          onDragStart={onDragStart}
+          onDragUpdate={onDragUpdate}
+          onDragEnd={onDragEnd}>
+          <Droppable
+            droppableId="all-stacks"
+            direction="horizontal"
+            type="stack"
+            >
+              {provided => (
+                <Box
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                  display="flex"
+                  //  alignItems="center" 
+                  justifyContent="center">
+                  {state.stackOrder.map((stackId, index) => {
+                    const stack = state.stacks[stackId]
+                    /* eslint-disable no-unused-vars */
+                    const cards = stack.cardIds.map(
+                      cardId => state.cards[cardId]
+                    );
+                    /* eslint-enable no-unused-vars */
+                    return (
+                      <>
+                      <InnerList 
+                        key={stack.id} 
+                        check={check}
+                        stack={stack} 
+                        cardMap={state.cards} 
+                        index={index} 
+                      />
+                      </>
+                    );
+                  })}
+                  {provided.placeholder}
+                </Box>
+              )}
+          </Droppable>
+        </DragDropContext>
+        </Flex>
+        <Flex>
+          <Box>
+            <Box>
+              <Heading>LIST COMPONENTS</Heading>
+            </Box>
+            <Spacer />
+            <Box>
+              <p>Some list title here</p>
+              <p>
+                some list makers here?
+              </p>
+            </Box>
+          </Box>
+        </Flex>
+      </VStack>
       </>
     )
 }

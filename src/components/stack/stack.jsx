@@ -124,7 +124,6 @@ export default function Stack(props){
                         </Button>
                     </Flex>
                     <Button mt='3px' borderRadius='none' size='xs' bg='#E7CD06' color='#291400'><DeleteIcon/>- Delete this stack</Button>
-
                 </Box>
             )}
         </Draggable>
