@@ -1,10 +1,11 @@
 import React from 'react'
 import Card from '../card/card'
 import { Droppable, Draggable } from 'react-beautiful-dnd'
-import { chakra, Box, Button, Spacer, Flex } from '@chakra-ui/react'
+import { chakra, Box, Button, Spacer, Flex, Input } from '@chakra-ui/react'
 import localforage from 'localforage'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { DragHandleIcon, DeleteIcon } from '@chakra-ui/icons'
 // import { theme, button } from '../theme'
 
 const CardList = chakra(Box, {
@@ -29,6 +30,18 @@ function InnerList(props) {
 
 export default function Stack(props){
 
+    const [name , setName] = React.useState(props.stack.title)
+
+    const handleChangeFunc = async(e,id)=>{
+        console.log('value ', e.target.value, document.getElementById(props.stack.id));
+        setName(e.target.value)
+        await  localStorage.setItem(id, e.target.value)
+    }
+
+    useEffect(()=>{
+     let temp =  localStorage.getItem(props.stack.id)
+    setName(temp)
+    },[])
 
     const AddClickFunc = async(data) =>{
         props.check(true)
@@ -69,24 +82,30 @@ export default function Stack(props){
                     <Flex
                         flexDirection={'column'}
                         {...provided.dragHandleProps}>
-                        <Box
+                        <Flex
                             bg='grey'
-                            color='white'
-                            p='.4em'>
-                                {props.stack.title}</Box>
-                    <Droppable droppableId={props.stack.id} type="card">
-                    {(provided, snapshot) => (
-                        <CardList
-                        ref={provided.innerRef}
-                        {...provided.droppableProps}
-                        isDraggingOver={snapshot.isDraggingOver}
+                            p='2px'
                         >
-                            <InnerList cards={props.cards} />
-                        {provided.placeholder}
-                        </CardList>
-                    )}
-                    </Droppable>
-                    <Spacer />
+                            <DragHandleIcon p='.1em'/>
+                            <Spacer />
+                            <Input
+                                bg='white'
+                                p='.5em'>
+                                {props.stack.name}
+                            </Input>
+                        </Flex>
+                        <Droppable droppableId={props.stack.id} type="card">
+                        {(provided, snapshot) => (
+                            <CardList
+                            ref={provided.innerRef}
+                            {...provided.droppableProps}
+                            isDraggingOver={snapshot.isDraggingOver}
+                            >
+                                <InnerList cards={props.cards} />
+                            {provided.placeholder}
+                            </CardList>
+                        )}
+                        </Droppable>
                         <Button 
                             p='.2em'
                             variant="solid"
@@ -99,6 +118,8 @@ export default function Stack(props){
                             onClick={()=>AddClickFunc(props)}>Add card
                         </Button>
                     </Flex>
+                    <Button mt='3px' size='xs' bg='#E7CD06' color='#291400'><DeleteIcon/>- Delete this stack</Button>
+
                 </Box>
             )}
         </Draggable>
