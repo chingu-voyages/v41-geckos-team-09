@@ -90,6 +90,9 @@ export default function Stack(props){
                             <Input
                                 size={'sm'}
                                 borderRadius='none'
+                                borderColor='grey'
+                                border='2px solid'
+                                focusBorderColor='#DA0A5B'
                                 bg='darkgrey'
                                 fontSize='lg'
                                 color='white'>

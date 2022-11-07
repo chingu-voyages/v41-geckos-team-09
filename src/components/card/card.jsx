@@ -55,7 +55,7 @@ export default function Card(props){
             <DragHandleIcon p='.1em'/><Spacer />
           </Box>
           <Box m={ .5 } >
-            <Textarea  focusBorderColor='#DA0A5B' size='sm' bg="AFAFAF" id={props.card.id} 
+            <Textarea  borderRadius='none' focusBorderColor='#DA0A5B' size='sm' bg="AFAFAF" id={props.card.id} 
             value={name}
             onChange={(e)=>handleChangeFunc(e,props.card.id)}
           /><Spacer />
