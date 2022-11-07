@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Draggable } from 'react-beautiful-dnd'
 import { Box, Flex, Spacer, Textarea, Button } from '@chakra-ui/react'
 import { DragHandleIcon, DeleteIcon } from '@chakra-ui/icons'
 import localforage, { removeItem } from 'localforage'
-import { useState } from 'react'
 
 export default function Card(props){
 
