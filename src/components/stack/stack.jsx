@@ -80,13 +80,15 @@ export default function Stack(props){
                         {...provided.dragHandleProps}>
                         <Input
                            focusBorderColor='#DA0A5B' 
+                           borderSize='2px solid'
+                           borderColor='grey'
+                           borderRadius='none'
+
+                           fontSize='large'
                            size='sm' 
                            bg="grey" 
                            color="white"
-                           borderRadius='none'
-                           border='none'
-                           fontSize='large'
-                           placeholder='Add a title'
+                           
                            id={props.stack.id} 
                            value={name}
                            onChange={(e)=>handleChangeFunc(e,props.stack.id)}
