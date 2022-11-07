@@ -58,9 +58,9 @@ export default function Card(props){
             <Textarea  focusBorderColor='#DA0A5B' size='sm' bg="AFAFAF" id={props.card.id} 
             value={name}
             onChange={(e)=>handleChangeFunc(e,props.card.id)}
-          />
+          /><Spacer />
           </Box>
-          <Button mt='3px' size='xs' bg='#E7CD06' color='#291400' onClick={()=>DeleteClickFunc(props)}><DeleteIcon/></Button>
+          <Button borderRadius='none' mt='3px' size='xs' bg='#E7CD06' color='#291400' onClick={()=>DeleteClickFunc(props)}><DeleteIcon/></Button>
           </Flex>
         )}
       </Draggable>

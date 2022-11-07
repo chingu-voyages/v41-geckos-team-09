@@ -84,13 +84,15 @@ export default function Stack(props){
                         {...provided.dragHandleProps}>
                         <Flex
                             bg='grey'
-                            p='2px'
+                            p='.3em'
                         >
                             <DragHandleIcon p='.1em'/>
-                            <Spacer />
                             <Input
-                                bg='white'
-                                p='.5em'>
+                                size={'sm'}
+                                borderRadius='none'
+                                bg='darkgrey'
+                                fontSize='lg'
+                                color='white'>
                                 {props.stack.name}
                             </Input>
                         </Flex>
@@ -118,7 +120,7 @@ export default function Stack(props){
                             onClick={()=>AddClickFunc(props)}>Add card
                         </Button>
                     </Flex>
-                    <Button mt='3px' size='xs' bg='#E7CD06' color='#291400'><DeleteIcon/>- Delete this stack</Button>
+                    <Button mt='3px' borderRadius='none' size='xs' bg='#E7CD06' color='#291400'><DeleteIcon/>- Delete this stack</Button>
 
                 </Box>
             )}
