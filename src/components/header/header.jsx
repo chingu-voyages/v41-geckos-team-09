@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './header.css';
 import logo from '../../images/logo-1.png';
 import ToggleMode from '../toggle'
+import { Box } from '@chakra-ui/react'
 
 
 import {
