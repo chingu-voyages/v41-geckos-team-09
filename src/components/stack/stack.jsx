@@ -46,7 +46,7 @@ export default function Stack(props){
 
         let obj = {
             card :{
-                "id": v4(),
+                "id": someId,
                 "content": "New Task"
             }
         }
@@ -96,9 +96,9 @@ export default function Stack(props){
     },[])
 
     const getName = async() =>{
-       let data = await localforage.getItem('initialData');
-       setName(data.stacks[stack.id].title)
-
+        let data = await localforage.getItem('initialData');
+        console.log('props, ', props, data)
+        setName(data.stacks[props.stack.id].title)
     }
 
     return (
