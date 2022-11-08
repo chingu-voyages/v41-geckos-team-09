@@ -8,6 +8,7 @@ import { Box, Button, Flex, Spacer, VStack, Heading } from '@chakra-ui/react'
 import localforage from 'localforage'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import { v4 } from 'uuid'
 
 // import theme from '../theme'
 
@@ -175,17 +176,21 @@ export default function Board(props) {
     
     console.log('created stacks after', createdStacks)
 
-      initialData.stackOrder.push(`stack-${createdStacks+1}`)
+      // initialData.stackOrder.push(`stack-${createdStacks+1}`)
   
+      const someId = v4()
+
+      initialData.stackOrder.push(someId)
+
       let obj = {
         stack :{
-          id : 'stack-'+(createdStacks+1),
-          title:'New Stack',
-          cardIds: []
+          "id": someId,
+          "title":'New Stack',
+          "cardIds": []
         }
     }
   
-      obj[`stack-${createdStacks+1}`] = obj['stack']
+      obj[someId] = obj['stack']
       delete obj['stack']
   
       initialData.stacks = {...initialData.stacks , ...obj }

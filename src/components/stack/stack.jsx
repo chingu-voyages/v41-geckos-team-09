@@ -40,7 +40,7 @@ export default function Stack(props){
         // props.setLocalData(true)
         let initialData = await localforage.getItem('initialData')
 
-        let length = Object.keys(initialData.cards).length;
+        // let length = Object.keys(initialData.cards).length;
         
         let someId = v4()
 
@@ -51,14 +51,13 @@ export default function Stack(props){
             }
         }
 
-        await localforage.setItem('totalStacks',length+1);
 
         obj[someId] = obj['card']
         delete obj['card']
 
         initialData = {...initialData, cards : {...initialData.cards , ...obj } }
 
-        let cardId = someId
+        // let cardId = someId
         initialData.stacks[data.stack.id].cardIds.push(someId)
 
 
@@ -72,13 +71,13 @@ export default function Stack(props){
         let initialData = await localforage.getItem('initialData')
 
         setTimeout(async()=>{
-            let stackOrder =initialData.stackOrder.filter((stack)=>{
+            let stackOrder = initialData.stackOrder.filter((stack)=>{
                 return stack != data.stack.id
              })
      
              initialData.stackOrder = stackOrder
              delete initialData.stacks[data.stack.id]
-             console.log('initialData after delete ', initialData)
+
              await localforage.setItem('initialData',initialData)
              props.check(true)
         },500)
@@ -87,7 +86,6 @@ export default function Stack(props){
     const handleStackNameChange = async(e,data)=>{
         setName(e.target.value)
         let initialData = await localforage.getItem('initialData');
-        console.log('initial Data ',initialData, data)
         initialData.stacks[data.id].title = e.target.value
         await localforage.setItem('initialData',initialData)
         props.check(true)
@@ -99,12 +97,9 @@ export default function Stack(props){
 
     const getName = async() =>{
        let data = await localforage.getItem('initialData');
-       console.log('props, ', props, data)
-       setName(data.stacks[props.stack.id].title)
+       setName(data.stacks[stack.id].title)
+
     }
-
-
-    console.log('name ',name)
 
     return (
         <Draggable draggableId={props.stack.id} index={props.index}>
