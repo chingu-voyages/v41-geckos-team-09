@@ -46,7 +46,7 @@ export default function Stack(props){
 
         let obj = {
             card :{
-                "id": `card-${length+1}`,
+                "id": v4(),
                 "content": "New Task"
             }
         }
