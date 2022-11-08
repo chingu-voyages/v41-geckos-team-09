@@ -154,7 +154,7 @@ export default function Board(props) {
   
   }
 
-    await localforage.setItem('initialData',newState)
+    await localforage.setItem('initialData', newState)
 
     setState(newState)
 
