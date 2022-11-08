@@ -64,6 +64,7 @@ export default function Stack(props){
 
         await localforage.setItem('initialData',initialData)
 
+        
      //   initialData = {...initialData, stacks : {...initialData.stacks , {...[data.stack.id] : {}}}}
     }
 
