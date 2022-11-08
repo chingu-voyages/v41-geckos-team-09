@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './header.css';
 import logo from '../../images/logo-1.png';
+import ToggleMode from '../toggle'
+
 
 import {
   EmailShareButton,
@@ -48,6 +50,8 @@ const whatsAppURL = 'https://www.whatsapp.com/';
             <option value='#'>Share</option>
           </select>
         </div>
+        <Box><ToggleMode mt="md">color mode</ToggleMode></Box>
+
       </div>
 
     </header>
