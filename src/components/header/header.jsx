@@ -23,7 +23,7 @@ const whatsAppURL = 'https://www.whatsapp.com/';
       <div className='nav'>
         <ul className='links'>
           <li><a className='custom-headerLink' href='#Timeline' onClick={() => handleViewChange('Timeline')}>Timeline View</a></li>
-          <li><a className='custom-headerLink' href='#Stack' onClick={() => handleViewChange('Stack')}>Stack View</a></li>
+          <li><a className='custom-headerLink' href='#Board' onClick={() => handleViewChange('Board')}>Stack View</a></li>
           {/* <li><a className='custom-headerLink' href='#'>Share</a></li>  */}
           {/* dynamically render Trip Name when user names file */}
           <li><a className='hidden' href='#'>Trip Name</a></li>
