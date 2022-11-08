@@ -9,6 +9,7 @@ import { DragHandleIcon, DeleteIcon } from '@chakra-ui/icons'
 import { generatePath } from 'react-router-dom'
 import initialData from '../initial-data'
 // import { theme, button } from '../theme'
+import { v4 } from 'uuid'
 
 const CardList = chakra(Box, {
     baseStyle: {
@@ -41,6 +42,8 @@ export default function Stack(props){
 
         let length = Object.keys(initialData.cards).length;
         
+        let someId = v4()
+
         let obj = {
             card :{
                 "id": `card-${length+1}`,
@@ -50,13 +53,13 @@ export default function Stack(props){
 
         await localforage.setItem('totalStacks',length+1);
 
-        obj[`card-${length+1}`] = obj['card']
+        obj[someId] = obj['card']
         delete obj['card']
 
         initialData = {...initialData, cards : {...initialData.cards , ...obj } }
 
-        let cardId = `card-${length+1}`
-        initialData.stacks[data.stack.id].cardIds.push(cardId)
+        let cardId = someId
+        initialData.stacks[data.stack.id].cardIds.push(someId)
 
 
         await localforage.setItem('initialData',initialData)
