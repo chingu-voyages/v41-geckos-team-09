@@ -72,7 +72,7 @@ export default function Card(props){
           </Box>
           <Box m={ .5 } >
             <Textarea  borderRadius='none' focusBorderColor='#DA0A5B' size='sm' bg="AFAFAF" id={props.card.id} 
-            value={name}
+            value={name} placeholder={''}
             onChange={(e)=>handleChangeFunc(e,props.card.id)}
           /><Spacer />
           </Box>
