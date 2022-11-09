@@ -32,9 +32,10 @@ import { Icon, Text} from '@chakra-ui/react'
 
 const Footer = () => {
     return (
-        <footer >
-                    <Text color='white'>Travel2it is coded by <a className="footer-link" target="_blank" href='https://www.linkedin.com/in/sara-baqla/' title="Sara, a linkedin.com link">Sara
-                        </a>, Ian, and <a className="footer-link" target="_blank" href='https://www.linkedin.com/in/isabel-klint/' title="Isabel, a linkedin.com link">Isabel
+        <footer>
+                    <Text color='white'>Travel 2 It is coded by <a className="footer-link" target="_blank" href='https://www.linkedin.com/in/sara-baqla/' title="Sara, a linkedin.com link">Sara
+                        </a>, <a className="footer-link" target="_blank" href='https://www.linkedin.com/in/iankorpi/' title="Ian, a linkedin.com link">Ian
+                        </a>, and <a className="footer-link" target="_blank" href='https://www.linkedin.com/in/isabel-klint/' title="Isabel, a linkedin.com link">Isabel
                         </a>: See our project on <a className="footer-link" target="_blank" href='https://github.com/chingu-voyages/v41-geckos-team-09' title="the Travel 2 It Github link">Github</a>
                         <em> </em>
                         <a className="footer-link" target="_blank" href='https://github.com/chingu-voyages/v41-geckos-team-09' title="the Travel 2 It Github link">
