@@ -271,10 +271,7 @@ export default function Board(props) {
             </Box>
             <Spacer />
             <Box>
-              <p>Some list title here</p>
-              <p>
-                some list makers here?
-              </p>
+              <Notes />
             </Box>
           </Box>
         </Flex>
