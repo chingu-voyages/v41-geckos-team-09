@@ -4,7 +4,7 @@ import React from 'react'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import initialData from '../initial-data'
 import Stack from '../stack/stack'
-import { Box, Button, Flex, Spacer, VStack, Heading } from '@chakra-ui/react'
+import { Box, Button, Flex, VStack } from '@chakra-ui/react'
 import localforage from 'localforage'
 import { useEffect } from 'react'
 import { useState } from 'react'
@@ -265,13 +265,7 @@ export default function Board(props) {
         </Flex>
         <Flex bg='lightgrey' w='100%' p='4em'>
           <Box>
-            <Box>
-              <Heading>Notes</Heading>
-            </Box>
-            <Spacer />
-            <Box>
               <Notes />
-            </Box>
           </Box>
         </Flex>
       </VStack>
