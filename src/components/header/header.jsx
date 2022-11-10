@@ -24,11 +24,11 @@ const whatsAppURL = 'https://www.whatsapp.com/';
     '>
       <Box><Link id='logoLink' href='#Welcome' onClick={() => handleViewChange('Welcome')}><img className='header-logo' src={logo} alt='travel logo' /></Link></Box>
       <Spacer />
-      <Box mt={'17px'} p={'1em'}><Link _hover={{ fontSize:'xl', color: '#aa5d89' }}  href='#Welcome' onClick={() => handleViewChange('Welcome')}>Welcome View</Link></Box>
+      {/* <Box mt={'17px'} p={'1em'}><Link _hover={{ fontSize:'xl', color: '#aa5d89' }}  href='#Welcome' onClick={() => handleViewChange('Welcome')}>Welcome View</Link></Box> */}
       <Spacer />
       <Box mt={'17px'} p={'1em'} ><Link _hover={{ fontSize:'xl', color: '#aa5d89' }} href='#Board' onClick={() => handleViewChange('Board')}>Board View</Link></Box>
       <Spacer />
-      <Box mt={'17px'} p={'1em'} ><Link _hover={{ fontSize:'xl', color: '#aa5d89' }} href='#'>Share</Link></Box>
+      {/* <Box mt={'17px'} p={'1em'} ><Link _hover={{ fontSize:'xl', color: '#aa5d89' }} href='#'>Share</Link></Box> */}
       <Spacer />
       <Box className='shareIcon' mt={'17px'}>
         {/* Email share button currently NOT functional */}
@@ -44,11 +44,10 @@ const whatsAppURL = 'https://www.whatsapp.com/';
         <WhatsappShareButton url={whatsAppURL}><WhatsappIcon size={45} borderRadius={15} /></WhatsappShareButton>
       </Box>
       <Spacer />
-      <Box >
+      <Box className='hidden' >
         {/* <Select className='menu'> */}
         <Select textColor={'#FAF9F9'} placeholder='My Trip' mt={'17px'} h={10} borderRadius={10} border={'none'} bgColor={'#1679ea'}>
-          <option value='#'>Timeline View</option>
-          <option value='#'>Stack View</option>
+          <option value='#'>Board View</option>
           <option value='#'>Share</option>
         </Select>
       </Box>
