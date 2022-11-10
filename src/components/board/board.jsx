@@ -9,8 +9,7 @@ import localforage from 'localforage'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { v4 } from 'uuid'
-
-// import theme from '../theme'
+import Notes from '../notes/notes'
 
 function InnerList(props) {
     const {stack, cardMap, index , check} = props;
