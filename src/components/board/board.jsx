@@ -266,7 +266,7 @@ export default function Board(props) {
         <Flex bg='lightgrey' w='100%' p='4em'>
           <Box>
             <Box>
-              <Heading>LIST COMPONENTS</Heading>
+              <Heading>Notes</Heading>
             </Box>
             <Spacer />
             <Box>

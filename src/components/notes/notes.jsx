@@ -1,10 +1,11 @@
 import React from 'react'
+import { Box, Textarea } from '@chakra-ui/react'
 
 
 export default function Notes() {
   return (
-    <div>
-      <p>Notes will go here!</p>
-    </div>
+    <Box borderColor={'#DB095B'}>
+      <Textarea>Write some notes</Textarea>
+    </Box>
   )
 }
