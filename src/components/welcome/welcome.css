@@ -1,0 +1,38 @@
+.welcome-container{
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 2%;
+}
+
+.welcome-heading {
+  text-align: left;
+  font-size: 2rem;
+  width: 50%;
+  font-weight: bold;
+}
+
+.welcome-blurb {
+  width: 50%;
+}
+.instructions-img {
+ width: 75%;
+ margin-left: 10%;
+}
+
+.welcome-top-section {
+clear: right;
+}
+
+.bus {
+  float: right;
+  width: 30%;
+}
+
+.instructions-heading {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.instructions-text {
+
+}
