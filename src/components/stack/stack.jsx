@@ -27,13 +27,11 @@ function InnerList(props) {
         return true;
     }
     return props.cards.map((card,index) => (
-            <Card check={props.check} key={card.id} card={card} index={index} />
+            <Card check={props.check} key={card.id} card={card} index={index} editable={true} />
     ));
 }
 
 export default function Stack(props){
-
-    const [name , setName] = React.useState()
 
     const AddClickFunc = async(data) =>{
         props.check(true)

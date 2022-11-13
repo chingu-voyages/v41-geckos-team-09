@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
 import { Draggable } from 'react-beautiful-dnd'
 import { Box, Flex, Spacer, Textarea, Button } from '@chakra-ui/react'
-import { DragHandleIcon, DeleteIcon } from '@chakra-ui/icons'
+import { DragHandleIcon, DeleteIcon, LockIcon, EditIcon } from '@chakra-ui/icons'
 import localforage, { removeItem } from 'localforage'
 import { useState } from 'react'
 
 
 export default function Card(props){
-
     const [name , setName] = React.useState(props.card.content)
+    const [editing, setEditing ] = React.useState(props.card.editable)
     const isDragDisabled = props.card.id === ''
 
     const DeleteClickFunc = async(card) =>{
@@ -34,12 +34,13 @@ export default function Card(props){
         
         //console.log(initialData.stacks[stack])
       })
+
+
       console.log('initial Data ', initialData)
 
       await localforage.setItem('initialData', initialData)
 
       props.check(true)
-
     }
 
     const handleChangeFunc = async(e,id)=>{
@@ -47,6 +48,10 @@ export default function Card(props){
         setName(e.target.value)
         await  localStorage.setItem(id, e.target.value)
     }
+
+    const handleToggleEditable = () => {
+      setEditing(!editing);
+    };
 
     useEffect(()=>{
      let temp =  localStorage.getItem(props.card.id)
@@ -71,13 +76,15 @@ export default function Card(props){
             <DragHandleIcon p='.1em'/><Spacer />
           </Box>
           <Box m={ .5 } >
-            <Textarea  borderRadius='none' focusBorderColor='#DA0A5B' size='sm' bg="AFAFAF" id={props.card.id} 
+            <Textarea isDisabled={editing} borderRadius='none' focusBorderColor='#DA0A5B' size='sm' bg="AFAFAF" id={props.card.id} 
             value={name} placeholder={''}
             onChange={(e)=>handleChangeFunc(e,props.card.id)}
           /><Spacer />
-          </Box>
+          <Button borderRadius='none' mt='3px' size='xs' bg='#E7CD06' color='#291400' onClick={()=>handleToggleEditable()}><LockIcon/></Button> 
           <Button borderRadius='none' mt='3px' size='xs' bg='#E7CD06' color='#291400' onClick={()=>DeleteClickFunc(props.card.id)}><DeleteIcon/></Button>
-          </Flex>
+          
+          </Box>
+      </Flex>
         )}
       </Draggable>
     )
