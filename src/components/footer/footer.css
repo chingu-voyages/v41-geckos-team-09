@@ -23,6 +23,7 @@ h4 {
 .footer-link {
     padding: 0;
     text-decoration: none;
+    font-weight: 600;
 }
 
 .footerContainer {
@@ -33,5 +34,6 @@ h4 {
     bottom:0;
     right:0;
     text-align: center;
-    padding: 10px
+    padding: 10px;
+    background-color: #DB095B;
 }
