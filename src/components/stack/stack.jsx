@@ -126,7 +126,8 @@ export default function Stack(props){
                                 fontSize='lg'
                                 value={name}
                                 onChange={(e)=>handleStackNameChange(e,props.stack)}
-                                color='white'/>
+                                color='black'
+                                fontWeight={'bold'}/>
                           
                         </Flex>
                         <Droppable droppableId={props.stack.id} type="card">

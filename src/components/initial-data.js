@@ -5,7 +5,7 @@ const initialData = {
     stacks: {
       's': {
         id: 's',
-        title: 'Enter an event title',
+        title: 'Enter a title',
         cardIds: ['c']
       }
     },
