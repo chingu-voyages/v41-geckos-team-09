@@ -33,6 +33,8 @@ function InnerList(props) {
 
 export default function Stack(props){
 
+    const [name , setName] = React.useState()
+
     const AddClickFunc = async(data) =>{
         props.check(true)
         // props.setLocalData(true)
@@ -126,7 +128,8 @@ export default function Stack(props){
                                 fontSize='lg'
                                 value={name}
                                 onChange={(e)=>handleStackNameChange(e,props.stack)}
-                                color='white'/>
+                                color='black'
+                                fontWeight={'bold'}/>
                           
                         </Flex>
                         <Droppable droppableId={props.stack.id} type="card">
